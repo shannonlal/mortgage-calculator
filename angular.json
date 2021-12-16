@@ -1,6 +1,32 @@
 {
   "version": 1,
   "projects": {
+    "calculator-display": {
+      "projectType": "library",
+      "root": "libs/calculator-display",
+      "sourceRoot": "libs/calculator-display/src",
+      "prefix": "mortgage-calculator",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calculator-display"],
+          "options": {
+            "jestConfig": "libs/calculator-display/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calculator-display/src/**/*.ts",
+              "libs/calculator-display/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "calculator-ui": {
       "projectType": "application",
       "root": "apps/calculator-ui",

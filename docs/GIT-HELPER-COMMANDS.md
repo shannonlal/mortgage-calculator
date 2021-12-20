@@ -23,4 +23,3 @@ stash@{2}: WIP on main: 5002d47 our new homepage
 ```
 git stash pop stash@{2}
 ```
-

@@ -1,1 +1,1 @@
-export * from './lib/term';
+export * from './lib/term'

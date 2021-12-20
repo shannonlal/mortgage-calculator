@@ -1,4 +1,4 @@
 export interface Term {
-    label: string;
-    duration: number;
-};
+  label: string
+  duration: number
+}

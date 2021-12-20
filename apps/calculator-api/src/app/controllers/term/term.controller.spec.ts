@@ -5,7 +5,6 @@ import { TermController } from './term.controller';
 
 describe('TermController', () => {
   let controller: TermController;
-  let service: TermService;
   const mockTerms: Array<Term> = [
       {
           "label": "1 Year",
@@ -30,7 +29,6 @@ describe('TermController', () => {
     }).compile();
 
     controller = module.get<TermController>(TermController);
-    service = module.get<TermService>(TermService);
   });
 
   it('should be defined', () => {

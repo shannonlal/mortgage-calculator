@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Logger, Injectable } from '@nestjs/common';
 import { Term } from '@mortgage-calculator/models';
 
 //console.log( 'Out', Term);
@@ -6,13 +6,15 @@ import { Term } from '@mortgage-calculator/models';
 const TERM_DURATION = 30;
 @Injectable()
 export class TermService {
+    private readonly logger = new Logger( TermService.name );
 
     /**
      * The following function will return a an array of Terms
      * @returns 
      */
     public async getTerms(): Promise<Array<Term>>{
-        let terms: Array<Term> = [];
+        this.logger.log(`Start Getting terms`);
+        const terms: Array<Term> = [];
         for( let i = 0; i < TERM_DURATION; i++){
             const duration = i+1;
             let label = `${duration} Years`;
@@ -26,6 +28,7 @@ export class TermService {
                 duration 
             }
         }
+        this.logger.log(`Completed Getting terms`);
         return Promise.resolve( terms );
     }
 }

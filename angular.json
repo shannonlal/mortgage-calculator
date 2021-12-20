@@ -92,10 +92,7 @@
             "polyfills": "apps/calculator-ui/src/polyfills.ts",
             "tsConfig": "apps/calculator-ui/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/calculator-ui/src/favicon.ico",
-              "apps/calculator-ui/src/assets"
-            ],
+            "assets": ["apps/calculator-ui/src/favicon.ico", "apps/calculator-ui/src/assets"],
             "styles": ["apps/calculator-ui/src/styles.scss"],
             "scripts": []
           },
@@ -153,10 +150,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/calculator-ui/src/**/*.ts",
-              "apps/calculator-ui/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/calculator-ui/src/**/*.ts", "apps/calculator-ui/src/**/*.html"]
           }
         },
         "test": {

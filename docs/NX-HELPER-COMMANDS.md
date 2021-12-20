@@ -34,6 +34,9 @@ The following command will format all your code in one shot
 nx format:write --all
 ```
 
+### Configure Husky
+The recommended approach with the new version of Husky is to use configuration directorys for each tasks.  
+
 ## Testing
 
 ### Test a particular library

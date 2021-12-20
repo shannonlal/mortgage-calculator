@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "63216540-3e6e-475c-8715-bf371e20f113",
+		"name": "Mortgage Calculator",
+		"description": "The following is a simple postman collection used for testing the application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Terms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/term",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"term"
+					]
+				},
+				"description": "The following request will make a call to get the list of tems"
+			},
+			"response": []
+		}
+	]
+}

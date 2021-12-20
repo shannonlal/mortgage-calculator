@@ -3,7 +3,7 @@ import { TermService } from './term/term.service';
 
 @Module({
   controllers: [],
-  providers: [],
+  providers: [ TermService ],
   exports: [ TermService ],
 })
 export class CalculatorServiceModule {}

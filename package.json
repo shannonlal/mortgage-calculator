@@ -7,7 +7,9 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "affected:lint":"nx affected:lint --fix",
+    "affected:test":"nx affected --target=test --base=main --head=HEAD"
   },
   "private": true,
   "dependencies": {
@@ -55,10 +57,17 @@
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "husky": "7.0.4",
     "jest": "27.2.3",
     "jest-preset-angular": "11.0.0",
     "prettier": "^2.3.1",
     "ts-jest": "27.0.5",
     "typescript": "~4.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit":"npm run affected:lint",
+      "pre-push":"npm run affected:test"
+    }
   }
 }

@@ -48,6 +48,12 @@ Example:
 nx test calculator-service
 ```
 
+## Testing all projects 
+
+```
+nx run-many --all --target=test
+```
+
 ## Building NestJS Resources
 
 ### Create a Nest JS Service in a project

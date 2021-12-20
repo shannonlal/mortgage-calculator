@@ -1,4 +1,4 @@
-import Term from './term'
+import {Term} from './term'
 
 describe('Term', () => {
   it('should validate interface Term exists', () => {

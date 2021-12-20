@@ -1,7 +1,6 @@
 import { Logger, Injectable } from '@nestjs/common'
 import { Term } from '@mortgage-calculator/models'
 
-//console.log( 'Out', Term);
 // TODO: Have Term duration be configurable and passed in as env
 const TERM_DURATION = 30
 @Injectable()

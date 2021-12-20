@@ -10,6 +10,7 @@
 3. Get Current Interest Rate
 
 ## Rest Clean up
+
 - Configure response codes
 - Proper way to turn on error handling
 

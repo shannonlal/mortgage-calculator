@@ -8,7 +8,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "test:integration:calculator-api":"node_modules/.bin/newman run docs/Postman/MortgageCalculator.postman_collection.json -e docs/Postman/Mortgage-Calculator.postman_environment.json ",
+    "test:integration:calculator-api": "node_modules/.bin/newman run docs/Postman/MortgageCalculator.postman_collection.json -e docs/Postman/Mortgage-Calculator.postman_environment.json ",
     "affected:lint": "nx affected:lint --fix",
     "affected:test": "nx affected --target=test --base=main --head=HEAD"
   },

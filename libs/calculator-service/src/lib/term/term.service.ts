@@ -14,7 +14,7 @@ export class TermService {
      */
     public async getTerms(): Promise<Array<Term>>{
         this.logger.log(`Start Getting terms`);
-        let terms: Array<Term> = [];
+        const terms: Array<Term> = [];
         for( let i = 0; i < TERM_DURATION; i++){
             const duration = i+1;
             let label = `${duration} Years`;

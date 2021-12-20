@@ -8,8 +8,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "affected:lint":"nx affected:lint --fix",
-    "affected:test":"nx affected --target=test --base=main --head=HEAD"
+    "affected:lint": "nx affected:lint --fix",
+    "affected:test": "nx affected --target=test --base=main --head=HEAD"
   },
   "private": true,
   "dependencies": {
@@ -60,14 +60,22 @@
     "husky": "7.0.4",
     "jest": "27.2.3",
     "jest-preset-angular": "11.0.0",
+    "lint-staged": "12.1.3",
     "prettier": "^2.3.1",
     "ts-jest": "27.0.5",
     "typescript": "~4.4.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit":"npm run affected:lint",
-      "pre-push":"npm run affected:test"
+      "pre-commit": "npm run affected:lint",
+      "pre-push": "npm run affected:test"
     }
+  },
+  "lint-staged": {
+    "{apps,libs}/**/*.{ts,json,md,scss,html}": [
+      "npm run affected:lint  -- --uncommitted --parallel -- --fix",
+      "npm run format:write -- --uncommitted",
+      "git add"
+    ]
   }
 }

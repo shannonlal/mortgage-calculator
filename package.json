@@ -64,17 +64,5 @@
     "prettier": "^2.3.1",
     "ts-jest": "27.0.5",
     "typescript": "~4.4.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run affected:lint"
-    }
-  },
-  "lint-staged": {
-    "{apps,libs}/**/*.{ts,json,md,scss,html}": [
-      "npm run affected:lint  -- --uncommitted --parallel -- --fix",
-      "npm run format:write -- --uncommitted",
-      "git add"
-    ]
   }
 }

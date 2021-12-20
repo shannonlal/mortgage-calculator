@@ -1,98 +1,97 @@
-# MortgageCalculator
+# Mortgage Calculator Application
+The following repo is a sample application used for calculator a mortgage based on a simple mortgage formula
 
-This project was generated using [Nx](https://nx.dev).
+# NX Workspace Configuration
+The following sample application is built using a NX monorepo and includes the following structure
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+## Applications
+The following is a list of applications
+### calculator-api
+This is a NEST JS Application which serves of key APIs used for supporting the calculator app
 
-🔎 **Smart, Extensible Build Framework**
+### calculator-ui
+This is an Angular Application which serves the UI and connects to the calculator api to provide the mortgage calculator functionality
 
-## Quick Start & Documentation
 
-[Nx Documentation](https://nx.dev/angular)
+## Shared Libraries
+The following is a summary of shared library within the mortgage calculator monorepo:
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+### Models
+A typescript library containing all the shared data models used across the application
 
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
+## Calculator Service
+This is a Nest JS Shared module that contains a list of shared services used by the calculator service
 
-## Adding capabilities to your workspace
+# Installation and Setup
+To run the install the application
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```
+npm install
+```
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+To run the Calculator-UI Application
 
-Below are our core plugins:
+```
+npm run start calculator-ui
+``` 
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+To run the Calculator-API
+```
+npm run start calculator-api
+```
+TODO:
+1. How to run all the apps
+2. Recommended Watchers turned on during development (linting and tests)
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+# Testing and Linting
+Note: The project is setup to use Husky and will run lint and all affected tests on commit.
 
-## Generate an application
+The following is the command to run all the tests
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+```
+nx run-many --all --target=test
+```
 
-> You can use any of the plugins above to generate applications as well.
+The following command is to run linting on the whole project
+```
+nx run-many --all --target=lint
+```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+## Integration Tests
 
-## Generate a library
+### Calculator API Integration Tests
+The Calculator API relies on a Postman Collection and Environment file and will use postman's newman cli tool to execute the script.  To run the tests you need to do the following:
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+1. Start the Calculator API
+```
+npm run start calculator-api
+```
 
-> You can also use any of the plugins above to generate libraries as well.
+2. Run the newman tests from the command line
+Open another terminal window and run the following:
+```
+npm run test:integration:calculator-api
+```
 
-Libraries are shareable across libraries and applications. They can be imported from `@mortgage-calculator/mylib`.
 
-## Development server
+# Documentation
+There is some supporting documentation that maybe useful:
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+## NX Helper Commands
+A list of common NX Commands for development:
 
-## Code scaffolding
+[NX Helper](docs/NX-HELPER-COMMANDS.md)
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+## Git Helper 
+A list of common git commands used during development:
+[GIT Helper](docs/GIT-HELPER-COMMANDS.md)
 
-## Build
+# TO Do list
+There is a small TODO file that is being used:
+[TODO](docs/TODO.md)
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+There is also a project tracked in github
 
-## Running unit tests
+https://github.com/shannonlal/mortgage-calculator/projects/1
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
 
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.

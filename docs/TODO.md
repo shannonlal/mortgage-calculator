@@ -1,11 +1,7 @@
 ## Rest API
 
-- Proper way to turn on error handling
-- Configure response codes
-- Capture logging
-- Implement Linting and pre-commit rules
 - Postman unit testing
-- Enable CORS
+- Track Requests and responses
 
 ## Additional Rest Endpoints
 
@@ -13,7 +9,11 @@
 2. Payment Frequency
 3. Get Current Interest Rate
 
-## Graoh QL End point
+## Rest Clean up
+- Configure response codes
+- Proper way to turn on error handling
+
+# Graoh QL End point
 
 -- Graphql will be for calculation. To provide the different result data
 

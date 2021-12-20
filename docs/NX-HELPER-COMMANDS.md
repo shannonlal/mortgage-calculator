@@ -37,6 +37,26 @@ nx format:write --all
 ### Configure Husky
 The recommended approach with the new version of Husky is to use configuration directorys for each tasks.  
 
+#### Add a new husky stage
+The following command will create a new file in the .husky folder where you can put in all the commands for husky
+```
+npx husky add .husky/pre-commit "npm test"
+git add .husky/pre-commit
+```
+
+The following will allow you to modify the husky configuration
+
+.husky/pre-commit
+```
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run affected:lint
+-- You can add additional commands here to run pre-commit steps
+npm run affected:test
+
+```
+
 ## Testing
 
 ### Test a particular library

@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mortgage-calculator/calculator-service": [
-        "libs/calculator-service/src/index.ts"
-      ],
       "@mortgage-calculator/models": ["libs/models/src/index.ts"]
     }
   },

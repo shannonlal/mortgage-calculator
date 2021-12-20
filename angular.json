@@ -53,29 +53,6 @@
       },
       "tags": []
     },
-    "calculator-service": {
-      "root": "libs/calculator-service",
-      "sourceRoot": "libs/calculator-service/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/calculator-service/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/calculator-service"],
-          "options": {
-            "jestConfig": "libs/calculator-service/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "tags": []
-    },
     "calculator-ui": {
       "projectType": "application",
       "root": "apps/calculator-ui",

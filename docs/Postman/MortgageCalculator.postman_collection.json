@@ -1,24 +1,87 @@
 {
-  "info": {
-    "_postman_id": "63216540-3e6e-475c-8715-bf371e20f113",
-    "name": "Mortgage Calculator",
-    "description": "The following is a simple postman collection used for testing the application",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Get Terms",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{hostname}}/api/term",
-          "host": ["{{hostname}}"],
-          "path": ["api", "term"]
-        },
-        "description": "The following request will make a call to get the list of tems"
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "63216540-3e6e-475c-8715-bf371e20f113",
+		"name": "Mortgage Calculator",
+		"description": "The following is a simple postman collection used for testing the application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Terms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var terms = JSON.parse(responseBody);",
+							"",
+							"tests[\"term length\"] = terms.length === 30;",
+							"tests[\"first term label correct\"] = terms[0].label === \"1 Year\";",
+							"tests[\"first term duration correct\"] = terms[0].duration === 1;",
+							"tests[\"second term label correct\"] = terms[1].label === \"2 Years\";",
+							"tests[\"second term duration correct\"] = terms[1].duration === 2;",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/term",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"term"
+					]
+				},
+				"description": "The following request will make a call to get the list of tems"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Rate Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var rateTypes = JSON.parse(responseBody);",
+							"",
+							"tests[\"rate types length\"] = rateTypes.length === 2;",
+							"tests[\"first rate type\"] = rateTypes[0] === \"FIXED\";",
+							"tests[\"second rate type\"] = rateTypes[1] === \"VARIABLE\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/interest-rate/types",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"interest-rate",
+						"types"
+					]
+				},
+				"description": "The following request will make a call to get the rate types"
+			},
+			"response": []
+		}
+	]
 }

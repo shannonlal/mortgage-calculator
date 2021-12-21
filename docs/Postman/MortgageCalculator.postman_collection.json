@@ -152,6 +152,40 @@
 				"description": "The following request will make a call to get a variable interest rate"
 			},
 			"response": []
+		},
+		{
+			"name": "Get Amortization Period",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var amoritizationPeriod = JSON.parse(responseBody);",
+							"",
+							"tests[\"years length\"] = amoritizationPeriod.years.length === 30;",
+							"tests[\"months length\"] = amoritizationPeriod.months.length === 12;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/amortization",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"amortization"
+					]
+				},
+				"description": "The following request will make a call to get Amortization Period"
+			},
+			"response": []
 		}
 	]
 }

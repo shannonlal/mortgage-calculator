@@ -44,6 +44,7 @@
     "@angular/cli": "~13.0.0",
     "@angular/compiler-cli": "^13.0.0",
     "@angular/language-service": "^13.0.0",
+    "@material-ui/core": "^4.11.2",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
     "@nrwl/cli": "13.3.6",

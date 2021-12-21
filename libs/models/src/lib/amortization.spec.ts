@@ -1,4 +1,4 @@
-import { AmortizationYear, AmortizationMonth } from './amortization';
+import { AmortizationYear, AmortizationMonth, AmortizationPeriod } from './amortization';
 
 describe('AmortizationYear', () => {
   it('should validate interface AmortizationYear', () => {
@@ -21,5 +21,27 @@ describe('AmortizationMonth', () => {
     expect(amortizationMonth).toBeDefined();
     expect(amortizationMonth.label).toBe('2 Month');
     expect(amortizationMonth.month).toBe(2);
+  });
+});
+
+describe('AmortizationPeriod', () => {
+  it('should validate interface AmortizationPeriod', () => {
+    const amortizationPeriod: AmortizationPeriod = {
+      months: [
+        {
+          label: `1 Month`,
+          month: 1,
+        }
+      ],
+      years: [
+        {
+          label: `2 Years`,
+          year: 2,
+        }
+      ]
+    };
+    expect(amortizationPeriod).toBeDefined();
+    expect(amortizationPeriod.months).toBeDefined();
+    expect(amortizationPeriod.years).toBeDefined();
   });
 });

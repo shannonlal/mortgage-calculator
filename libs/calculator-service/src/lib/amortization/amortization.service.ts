@@ -1,4 +1,4 @@
-import { AmortizationYear } from '@mortgage-calculator/models';
+import { AmortizationMonth, AmortizationYear } from '@mortgage-calculator/models';
 import { Logger, Injectable } from '@nestjs/common';
 
 const MAX_AMORTIZATION_YEARS = 30;
@@ -36,4 +36,33 @@ export class AmortizationService {
 
     return Promise.resolve(amortizationYears);
   }
+
+     /**
+   * The following function will return an array of Amortization Months
+   * @returns
+   */
+      public async getAmortizationMonths(): Promise<Array<AmortizationMonth>> {
+        this.logger.log(`Start Getting Amortization Months`);
+    
+        const amortizationMonth: Array<AmortizationMonth> = [];
+        for( let i = 0; i < MAX_AMORTIZATION_MONTHS; i++ ){
+            let aMonth;
+            const month = i+1;
+            if( i === 0){
+                aMonth = {
+                    label: `${month} Month`,
+                    month,
+                }
+            } else {
+                aMonth = {
+                    label: `${month} Months`,
+                    month,
+                }
+            }
+    
+            amortizationMonth.push( aMonth );
+        }
+    
+        return Promise.resolve(amortizationMonth);
+      }
 }

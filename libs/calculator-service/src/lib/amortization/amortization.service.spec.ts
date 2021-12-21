@@ -30,4 +30,19 @@ describe('AmortizationService', () => {
       expect( err ).toBeUndefined();
     }
   });
+
+  it('should get Amortization Months', async () => {
+    try{
+      const amortizationMonths = await service.getAmortizationMonths();
+
+      expect( amortizationMonths ).toBeDefined();
+      expect( amortizationMonths.length ).toBe( 12 );
+      expect( amortizationMonths[0].label ).toBe( '1 Month');
+      expect( amortizationMonths[0].month).toBe( 1 );
+      expect( amortizationMonths[1].label ).toBe( '2 Months');
+      expect( amortizationMonths[1].month).toBe( 2 );
+    }catch( err ){
+      expect( err ).toBeUndefined();
+    }
+  });
 });

@@ -98,3 +98,16 @@ The following command will create a term service (and spec) in a project (librar
 ```
 nx g @nrwl/nest:controller term --project=calculator-api --directory=app/controllers
 ```
+
+## Project Setup
+By default the nx workspace does not have react so the first step will be install the nx react plugin first.  
+
+```
+npm install @nrwl/react --save-dev
+```
+
+The to create a new react application you need to run the following command:
+
+```
+nx generate @nrwl/react:app ${name of application} 
+```

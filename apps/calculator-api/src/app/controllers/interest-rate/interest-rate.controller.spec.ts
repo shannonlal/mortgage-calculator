@@ -38,6 +38,5 @@ describe('InterestRateController', () => {
     } catch (err){
       expect( err ).toBeUndefined();
     }
-    expect(controller).toBeDefined();
   });
 });

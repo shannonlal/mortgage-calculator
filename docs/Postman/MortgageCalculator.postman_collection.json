@@ -8,6 +8,28 @@
 	"item": [
 		{
 			"name": "Get Terms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var terms = JSON.parse(responseBody);",
+							"",
+							"tests[\"term length\"] = terms.length === 30;",
+							"tests[\"first term label correct\"] = terms[0].label === \"1 Year\";",
+							"tests[\"first term duration correct\"] = terms[0].duration === 1;",
+							"tests[\"second term label correct\"] = terms[1].label === \"2 Years\";",
+							"tests[\"second term duration correct\"] = terms[1].duration === 2;",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -22,6 +44,112 @@
 					]
 				},
 				"description": "The following request will make a call to get the list of tems"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Rate Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var rateTypes = JSON.parse(responseBody);",
+							"",
+							"tests[\"rate types length\"] = rateTypes.length === 2;",
+							"tests[\"first rate type\"] = rateTypes[0] === \"FIXED\";",
+							"tests[\"second rate type\"] = rateTypes[1] === \"VARIABLE\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/interest-rate/types",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"interest-rate",
+						"types"
+					]
+				},
+				"description": "The following request will make a call to get the rate types"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fixed Interest Rate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var rateTypes = JSON.parse(responseBody);",
+							"",
+							"tests[\"rate types length\"] = rateTypes.type === \"FIXED\";",
+							"tests[\"first rate type\"] = rateTypes.rate !== \"undefined\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/interest-rate/FIXED",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"interest-rate",
+						"FIXED"
+					]
+				},
+				"description": "The following request will make a call to get a fixed interest rate"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Variable Interest Rate ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var rateTypes = JSON.parse(responseBody);",
+							"",
+							"tests[\"rate types length\"] = rateTypes.type === \"VARIABLE\";",
+							"tests[\"first rate type\"] = rateTypes.rate !== \"undefined\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/interest-rate/VARIABLE",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"interest-rate",
+						"VARIABLE"
+					]
+				},
+				"description": "The following request will make a call to get a variable interest rate"
 			},
 			"response": []
 		}

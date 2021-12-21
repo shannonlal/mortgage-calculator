@@ -18,6 +18,9 @@ This is a NEST JS Application which serves of key APIs used for supporting the c
 
 This is an Angular Application which serves the UI and connects to the calculator api to provide the mortgage calculator functionality
 
+### calculator-ui-react
+This is a React Application which serves the UI and connects to teh calculator api to provide the mortgage application
+
 ## Shared Libraries
 
 The following is a summary of shared library within the mortgage calculator monorepo:
@@ -42,6 +45,12 @@ To run the Calculator-UI Application
 
 ```
 npm run start calculator-ui
+```
+
+To run the Calculator-UI-React Application
+
+```
+npm run start calculator-ui-react
 ```
 
 To run the Calculator-API

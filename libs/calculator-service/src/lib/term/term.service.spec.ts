@@ -34,7 +34,7 @@ describe('TermService', () => {
 
       expect(terms).toBeDefined();
       expect(terms[0].label).toBe('1 Year');
-      expect(terms[0].duration).toBe(1);
+      expect(terms[0].value).toBe(1);
     } catch (err) {
       expect(err).toBeUndefined();
     }
@@ -46,7 +46,7 @@ describe('TermService', () => {
 
       expect(terms).toBeDefined();
       expect(terms[1].label).toBe('2 Years');
-      expect(terms[1].duration).toBe(2);
+      expect(terms[1].value).toBe(2);
     } catch (err) {
       expect(err).toBeUndefined();
     }

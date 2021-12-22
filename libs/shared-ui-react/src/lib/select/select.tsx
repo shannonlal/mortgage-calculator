@@ -1,6 +1,5 @@
-import './shared-ui-react.module.scss';
 import { Selectable } from '@mortgage-calculator/models';
-import React from 'react';
+import React, {useState} from 'react';
 import {
     FormControl,
     Select
@@ -9,7 +8,6 @@ import {
 /* eslint-disable-next-line */
 interface CalculatorSelectProps<T extends Selectable> {
     id: string;
-    initialValue:string;
     handleChange: (eventName: string, value :string) => void;
     eventName: string;
     optionsList: T[];
@@ -22,9 +20,12 @@ interface CalculatorSelectProps<T extends Selectable> {
  * @returns 
  */
 const CalculatorSelect = <T extends Selectable>(props: CalculatorSelectProps<T>) =>{
+    
+    const [selected, setSelected] = useState("");
+    
     const change = ( e: React.ChangeEvent<any> ) => {
-        console.log( 'Selection Called',e);
         props.handleChange( props.eventName, e.target.value);
+        setSelected( e.target.value );
     }
 
     const generateOptionsList = ()=>{
@@ -41,7 +42,7 @@ const CalculatorSelect = <T extends Selectable>(props: CalculatorSelectProps<T>)
             <Select
                 native
                 id={props.id}
-                value={props.initialValue}
+                value={selected}
                 onChange={change}
                 inputProps={{
                     name: props.id

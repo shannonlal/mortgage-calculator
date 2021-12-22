@@ -111,3 +111,37 @@ The to create a new react application you need to run the following command:
 ```
 nx generate @nrwl/react:app ${name of application} 
 ```
+
+## Storybook Setup Configuration
+### Add Story book support to a project
+```
+npm install @nrwl/storybook --save-dev
+```
+
+### Add Story Book Support to a library or app
+
+Here is for React
+```
+nx g @nrwl/react:storybook-configuration --name=ui
+```
+
+Here is for Angular
+```
+nx g @nrwl/angular:storybook-configuration --name=ui
+```
+
+### Generate Stories for existing components 
+React
+```
+nx g @nrwl/react:stories --project=ui
+```
+
+Angular
+```
+nx g @nrwl/angular:stories --project=ui
+```
+
+### Run Storybook for a particular project
+```
+nx run {project-name}:storybook
+```

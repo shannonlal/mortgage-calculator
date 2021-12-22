@@ -23,8 +23,7 @@ describe("Calculator Select", () => {
         id: 'select-id',
         handleChange,
         eventName: 'component-event',
-        optionsList,
-        initialValue: '26'
+        optionsList
     };
     try{
         const { getByTestId } = render(<CalculatorSelect {...props} />); 
@@ -58,8 +57,7 @@ describe("Calculator Select", () => {
         id: 'select-id',
         handleChange,
         eventName: 'component-event',
-        optionsList,
-        initialValue: '26'
+        optionsList
     };
     try{
         const { getByTestId } = render(<CalculatorSelect {...props} />); 

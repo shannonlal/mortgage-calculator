@@ -23,20 +23,21 @@ interface CalculatorSelectProps<T extends Selectable> {
  */
 const CalculatorSelect = <T extends Selectable>(props: CalculatorSelectProps<T>) =>{
     const change = ( e: React.ChangeEvent<any> ) => {
+        console.log( 'Selection Called',e);
         props.handleChange( props.eventName, e.target.value);
     }
 
     const generateOptionsList = ()=>{
         if( props.optionsList ){
-            return props.optionsList.map((item: Selectable) => {
-                return <option value={item.value}>{item.label} Years</option>;
+            return props.optionsList.map((item: Selectable, index) => {
+                return <option key={`${props.eventName}-${index}`} value={item.value} data-testid={`calculator-option-${item.value}`}>{item.label}</option>;
             });
         }
         return;
     };
 
     return (
-        <FormControl variant="outlined" fullWidth>
+        <FormControl variant="outlined" data-testid={`form-select-${props.id}`} fullWidth>
             <Select
                 native
                 id={props.id}
@@ -45,6 +46,7 @@ const CalculatorSelect = <T extends Selectable>(props: CalculatorSelectProps<T>)
                 inputProps={{
                     name: props.id
                 }}
+                data-testid={`select-${props.id}`}
             >
             <option aria-label="None" value="" />
             {generateOptionsList()}

@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run affected:lint
-npm run affected:test
+npm run test:all
+npm run lint:all

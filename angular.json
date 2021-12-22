@@ -312,6 +312,29 @@
         }
       },
       "tags": []
+    },
+    "shared-ui-react": {
+      "root": "libs/shared-ui-react",
+      "sourceRoot": "libs/shared-ui-react/src",
+      "projectType": "library",
+      "tags": [],
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared-ui-react/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-ui-react"],
+          "options": {
+            "jestConfig": "libs/shared-ui-react/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

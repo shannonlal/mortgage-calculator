@@ -10,7 +10,9 @@
     "test": "nx test",
     "test:integration:calculator-api": "node_modules/.bin/newman run docs/Postman/MortgageCalculator.postman_collection.json -e docs/Postman/Mortgage-Calculator.postman_environment.json ",
     "affected:lint": "nx affected:lint --fix",
-    "affected:test": "nx affected --target=test --base=main --head=HEAD"
+    "affected:test": "nx affected --target=test --base=main --head=HEAD",
+    "test:all":"nx run-many --all --target=test",
+    "lint:all":"nx run-many --all --target=lint"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +60,7 @@
     "@nrwl/tao": "13.3.6",
     "@nrwl/web": "13.3.11",
     "@nrwl/workspace": "13.3.6",
+    "@testing-library/jest-dom": "5.16.1",
     "@testing-library/react": "12.1.2",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.2",

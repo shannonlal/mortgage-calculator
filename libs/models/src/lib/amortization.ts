@@ -1,8 +1,8 @@
 import { Selectable } from "./selectable";
 
-export interface AmortizationYear extends Selectable  {};
+export type AmortizationYear = Selectable;
 
-export interface AmortizationMonth extends Selectable {}
+export type AmortizationMonth = Selectable
 
 export interface AmortizationPeriod {
   years: AmortizationYear[];

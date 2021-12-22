@@ -1,4 +1,4 @@
-import './shared-ui-react.module.scss';
+//import './shared-ui-react.module.scss';
 import React from 'react';
 import {
     OutlinedInput,

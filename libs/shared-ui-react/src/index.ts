@@ -1,1 +1,2 @@
-export * from './lib/shared-ui-react';
+export * from './lib/input/input';
+

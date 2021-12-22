@@ -24,7 +24,7 @@ export class TermService {
       }
       terms[i] = {
         label,
-        duration,
+        value:duration,
       };
     }
     this.logger.log(`Completed Getting terms`);

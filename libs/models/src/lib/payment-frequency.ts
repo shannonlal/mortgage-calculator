@@ -1,5 +1,3 @@
-export interface PaymentFrequency {
-  label: string;
-  weeks: number;
-};
+import { Selectable } from './selectable';
+export type PaymentFrequency = Selectable;
 

@@ -1,12 +1,8 @@
-export interface AmortizationYear {
-  label: string;
-  year: number;
-};
+import { Selectable } from "./selectable";
 
-export interface AmortizationMonth {
-  label: string;
-  month: number;
-}
+export type AmortizationYear = Selectable;
+
+export type AmortizationMonth = Selectable
 
 export interface AmortizationPeriod {
   years: AmortizationYear[];

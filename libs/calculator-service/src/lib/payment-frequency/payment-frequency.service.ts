@@ -16,22 +16,22 @@ export class PaymentFrequencyService {
 
     paymentFrequency.push( {
         label: `Weekly`,
-        weeks: 52
+        value: 52
     });
 
     paymentFrequency.push( {
         label: `Accelerated Bi-Weekly`,
-        weeks: 26
+        value: 26
     });
 
     paymentFrequency.push( {
         label: `Semi-Monthly`,
-        weeks: 24
+        value: 24
     });
 
     paymentFrequency.push( {
         label: `Monthly`,
-        weeks: 12
+        value: 12
     });
 
     return Promise.resolve(paymentFrequency);

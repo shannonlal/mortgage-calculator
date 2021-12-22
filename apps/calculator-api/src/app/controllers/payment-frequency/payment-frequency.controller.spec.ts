@@ -9,11 +9,11 @@ describe('PaymentFrequencyController', () => {
   const mockPaymentFrequency: Array<PaymentFrequency> = [
     {
       "label": "Weekly",
-      "weeks": 52
+      "value": 52
     },
     {
         "label": "Accelerated Bi-Weekly",
-        "weeks": 26
+        "value": 26
     }
   ];
   beforeEach(async () => {
@@ -44,7 +44,7 @@ describe('PaymentFrequencyController', () => {
       expect( paymentFrequency ).toBeDefined();
       expect( paymentFrequency.length ).toBe( 2 );
       expect( paymentFrequency[0].label ).toBe( 'Weekly' );
-      expect( paymentFrequency[0].weeks ).toBe( 52 );
+      expect( paymentFrequency[0].value ).toBe( 52 );
     } catch (err){
       expect( err ).toBeUndefined();
     }

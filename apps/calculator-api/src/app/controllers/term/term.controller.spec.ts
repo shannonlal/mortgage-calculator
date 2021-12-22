@@ -8,11 +8,11 @@ describe('TermController', () => {
   const mockTerms: Array<Term> = [
     {
       label: '1 Year',
-      duration: 1,
+      value: 1,
     },
     {
       label: '2 Years',
-      duration: 2,
+      value: 2,
     },
   ];
   beforeEach(async () => {

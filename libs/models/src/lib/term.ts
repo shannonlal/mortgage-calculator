@@ -1,4 +1,3 @@
-export interface Term {
-  label: string;
-  duration: number;
-}
+import { Selectable } from './selectable';
+
+export type Term = Selectable;

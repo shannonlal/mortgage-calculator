@@ -22,12 +22,12 @@ export class AmortizationService {
         if( i === 0){
             aYears = {
                 label: `${year} Year`,
-                year,
+                value: year,
             }
         } else {
             aYears = {
                 label: `${year} Years`,
-                year,
+                value: year,
             }
         }
 
@@ -51,12 +51,12 @@ export class AmortizationService {
             if( i === 0){
                 aMonth = {
                     label: `${month} Month`,
-                    month,
+                    value: month,
                 }
             } else {
                 aMonth = {
                     label: `${month} Months`,
-                    month,
+                    value: month,
                 }
             }
     

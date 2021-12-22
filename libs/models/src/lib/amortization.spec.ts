@@ -4,11 +4,11 @@ describe('AmortizationYear', () => {
   it('should validate interface AmortizationYear', () => {
     const amortizationYear: AmortizationYear = {
       label: `2 Years`,
-      year: 2,
+      value: 2,
     };
     expect(amortizationYear).toBeDefined();
     expect(amortizationYear.label).toBe('2 Years');
-    expect(amortizationYear.year).toBe(2);
+    expect(amortizationYear.value).toBe(2);
   });
 });
 
@@ -16,11 +16,11 @@ describe('AmortizationMonth', () => {
   it('should validate interface AmortizationMonth', () => {
     const amortizationMonth: AmortizationMonth = {
       label: `2 Month`,
-      month: 2,
+      value: 2,
     };
     expect(amortizationMonth).toBeDefined();
     expect(amortizationMonth.label).toBe('2 Month');
-    expect(amortizationMonth.month).toBe(2);
+    expect(amortizationMonth.value).toBe(2);
   });
 });
 
@@ -30,13 +30,13 @@ describe('AmortizationPeriod', () => {
       months: [
         {
           label: `1 Month`,
-          month: 1,
+          value: 1,
         }
       ],
       years: [
         {
           label: `2 Years`,
-          year: 2,
+          value: 2,
         }
       ]
     };

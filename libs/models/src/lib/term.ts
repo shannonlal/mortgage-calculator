@@ -1,3 +1,3 @@
 import { Selectable } from './selectable';
 
-export interface Term extends Selectable{};
+export type Term = Selectable;

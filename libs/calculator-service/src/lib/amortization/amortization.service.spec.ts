@@ -23,9 +23,9 @@ describe('AmortizationService', () => {
       expect( amortizationYears ).toBeDefined();
       expect( amortizationYears.length ).toBe( 30 );
       expect( amortizationYears[0].label ).toBe( '1 Year');
-      expect( amortizationYears[0].year).toBe( 1 );
+      expect( amortizationYears[0].value).toBe( 1 );
       expect( amortizationYears[1].label ).toBe( '2 Years');
-      expect( amortizationYears[1].year).toBe( 2 );
+      expect( amortizationYears[1].value).toBe( 2 );
     }catch( err ){
       expect( err ).toBeUndefined();
     }
@@ -38,9 +38,9 @@ describe('AmortizationService', () => {
       expect( amortizationMonths ).toBeDefined();
       expect( amortizationMonths.length ).toBe( 12 );
       expect( amortizationMonths[0].label ).toBe( '1 Month');
-      expect( amortizationMonths[0].month).toBe( 1 );
+      expect( amortizationMonths[0].value).toBe( 1 );
       expect( amortizationMonths[1].label ).toBe( '2 Months');
-      expect( amortizationMonths[1].month).toBe( 2 );
+      expect( amortizationMonths[1].value).toBe( 2 );
     }catch( err ){
       expect( err ).toBeUndefined();
     }

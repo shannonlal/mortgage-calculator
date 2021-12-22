@@ -2,11 +2,9 @@ import './shared-ui-react.module.scss';
 import React from 'react';
 import {
     OutlinedInput,
-    InputAdornment,
-    InputAdornmentTypeMap
+    InputAdornment
   } from "@material-ui/core";
 
-type adornmentPosition = "start" | "end";
 /* eslint-disable-next-line */
 interface BaseCalculatorInputProps<T> {
     id: string;

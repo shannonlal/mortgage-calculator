@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { MortgageCalculator } from './mortgage-calculator.page';
+import MortgageCalculator from './mortgage-calculator.page';
 
 export default {
   component: MortgageCalculator,

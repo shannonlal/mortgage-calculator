@@ -1,4 +1,4 @@
-export interface AmortizationYear {
+export interface AmortizationYear  {
   label: string;
   year: number;
 };

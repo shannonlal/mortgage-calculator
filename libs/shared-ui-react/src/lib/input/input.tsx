@@ -2,9 +2,11 @@ import './shared-ui-react.module.scss';
 import React from 'react';
 import {
     OutlinedInput,
-    InputAdornment
+    InputAdornment,
+    InputAdornmentTypeMap
   } from "@material-ui/core";
 
+type adornmentPosition = "start" | "end";
 /* eslint-disable-next-line */
 interface BaseCalculatorInputProps<T> {
     id: string;
@@ -12,8 +14,7 @@ interface BaseCalculatorInputProps<T> {
     handleChange: (eventName: string, value :T) => void;
     eventName: string;
     adornmentValue?: string;
-    adornmentPosition?: string;
-
+    adornmentPosition? : 'end'|'start';
 };
 
 type NumericCalculatorInputProps = BaseCalculatorInputProps<number>;
@@ -25,19 +26,30 @@ const NumericCalculatorInput = ( props: NumericCalculatorInputProps ) =>{
     const change = ( e: React.ChangeEvent<any> ) => {
         props.handleChange( props.eventName, e.target.value);
     }
-    return (
-        <OutlinedInput
-                id={props.id}
-                data-testid={props.id}
-                value={props.value}
-                fullWidth
-                onChange={(e) => change(e,)}
-                startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            />
-      );
+
+    if( props.adornmentPosition && props.adornmentValue){
+        return (
+            <OutlinedInput
+                    id={props.id}
+                    data-testid={props.id}
+                    value={props.value}
+                    fullWidth
+                    onChange={(e) => change(e,)}
+                    startAdornment={<InputAdornment position={props.adornmentPosition}>{props!.adornmentValue}</InputAdornment>}
+                />
+          );
+        } else {
+            return (
+                <OutlinedInput
+                    id={props.id}
+                    data-testid={props.id}
+                    value={props.value}
+                    fullWidth
+                    onChange={(e) => change(e,)}
+                />
+            );
+        }
 };
-
-
 
 export {
     NumericCalculatorInput,

@@ -1,4 +1,5 @@
 import './shared-ui-react.module.scss';
+import { Selectable } from '@mortgage-calculator/models';
 import React from 'react';
 import {
     FormControl,
@@ -6,22 +7,33 @@ import {
   } from "@material-ui/core";
 
 /* eslint-disable-next-line */
-interface CalculatorSelectProps<T> {
+interface CalculatorSelectProps<T extends Selectable> {
     id: string;
     initialValue:string;
     handleChange: (eventName: string, value :string) => void;
     eventName: string;
-    adornmentValue?: string;
-    adornmentPosition? : 'end'|'start';
     optionsList: T[];
 };
 
 
-/*const CalculatorSelect = <T>( props: CalculatorSelectProps<T> ) =>{
-
+/**
+ * The following will build a selection list that accepts a selectable list and will display it
+ * @param props: CalculatorSelectProps
+ * @returns 
+ */
+const CalculatorSelect = <T extends Selectable>(props: CalculatorSelectProps<T>) =>{
     const change = ( e: React.ChangeEvent<any> ) => {
         props.handleChange( props.eventName, e.target.value);
     }
+
+    const generateOptionsList = ()=>{
+        if( props.optionsList ){
+            return props.optionsList.map((item: Selectable) => {
+                return <option value={item.value}>{item.label} Years</option>;
+            });
+        }
+        return;
+    };
 
     return (
         <FormControl variant="outlined" fullWidth>
@@ -35,14 +47,13 @@ interface CalculatorSelectProps<T> {
                 }}
             >
             <option aria-label="None" value="" />
-            {generateOptionsHelpers.generatePeriodYearsOptions()}
+            {generateOptionsList()}
             </Select>
         </FormControl>
     )
-};*/
-
-
+}
 
 export {
-    CalculatorSelectProps
+    CalculatorSelectProps,
+    CalculatorSelect
 };

@@ -16,9 +16,9 @@ interface BaseCalculatorInputProps<T> {
 
 };
 
-interface NumericCalculatorInputProps extends BaseCalculatorInputProps<Number>{};
+type NumericCalculatorInputProps = BaseCalculatorInputProps<number>;
 
-interface StringCalculatorInputProps extends BaseCalculatorInputProps<string>{};
+type StringCalculatorInputProps = BaseCalculatorInputProps<string>;
 
 const NumericCalculatorInput = ( props: NumericCalculatorInputProps ) =>{
 
@@ -26,8 +26,7 @@ const NumericCalculatorInput = ( props: NumericCalculatorInputProps ) =>{
         props.handleChange( props.eventName, e.target.value);
     }
     return (
-        <>
-            <OutlinedInput
+        <OutlinedInput
                 id={props.id}
                 data-testid={props.id}
                 value={props.value}
@@ -35,7 +34,6 @@ const NumericCalculatorInput = ( props: NumericCalculatorInputProps ) =>{
                 onChange={(e) => change(e,)}
                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
             />
-        </>
       );
 };
 

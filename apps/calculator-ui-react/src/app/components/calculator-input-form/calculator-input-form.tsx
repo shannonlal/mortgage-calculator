@@ -62,7 +62,7 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
 
   const classes = useStyles();
   return (
-    <div>
+    <div data-testid="calculator-input-form-id">
     <Box m={6} className="c-mortgage-calculator">
       <Typography variant="h4" paragraph>
         Mortgage Calculator

@@ -17,12 +17,24 @@ import {
   getMortgageAmountProps, 
   getPaymentFrequencyProps, 
   getTermProps } from './calculator-input-props.builder';
+import { RateType } from '@mortgage-calculator/models';
 
 const useStyles = makeStyles({
   fieldBottom: {
     marginBottom: 10
   }
 });
+
+interface IMortgageDetails {
+  mortgageAmount: number;
+  prepaymentAmount: number;
+  interestRate: number;
+  amortizationYear: number;
+  amortizationMonth: number;
+  interestRateType: RateType;
+  paymentFrequency: number;
+  term: number;
+};
 
 /* eslint-disable-next-line */
 export interface CalculatorInputFormProps {}
@@ -33,6 +45,16 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
     return;
   };
 
+  const [mortgageDetails, setMortgageDetails] = useState<IMortgageDetails>({
+    mortgageAmount: 100000,
+    prepaymentAmount: 10000,
+    interestRate: 2.00,
+    amortizationYear: 5,
+    amortizationMonth: 2,
+    interestRateType: RateType.FIXED,
+    paymentFrequency: 52,
+    term: 5
+  });
 
   const classes = useStyles();
   return (
@@ -46,21 +68,21 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
           <Typography variant="body1">Mortgage Amount:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <NumericCalculatorInput {...getMortgageAmountProps(1000, handleChange)}/>
+          <NumericCalculatorInput {...getMortgageAmountProps(mortgageDetails.mortgageAmount, handleChange)}/>
         </Grid>
 
         <Grid item xs={5}>
           <Typography variant="body1">Down Payment Amount:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <NumericCalculatorInput {...getDownPaymentAmountProps( 10000, handleChange)}/>
+          <NumericCalculatorInput {...getDownPaymentAmountProps( mortgageDetails.prepaymentAmount, handleChange)}/>
         </Grid>
 
         <Grid item xs={5}>
           <Typography variant="body1">Interest Rate:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <NumericCalculatorInput { ...getInterestRateProps( 2.11, handleChange)}
+          <NumericCalculatorInput { ...getInterestRateProps( mortgageDetails.interestRate, handleChange)}
             />
         </Grid>
 

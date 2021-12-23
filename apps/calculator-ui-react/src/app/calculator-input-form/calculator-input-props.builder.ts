@@ -28,7 +28,7 @@ export const getInterestRateProps = (interestRate: number, handleChange: ( event
         id:'interestRate',
         handleChange,
         eventName:'interestRate',
-        adornmentValue:'$', 
+        adornmentValue:'%', 
         adornmentPosition:'start',
         value: interestRate
     };

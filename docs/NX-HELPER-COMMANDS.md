@@ -112,6 +112,11 @@ The to create a new react application you need to run the following command:
 nx generate @nrwl/react:app ${name of application} 
 ```
 
+### Generate a React Component in a specific project
+```
+nx g @nrwl/react:component calculator-input-form --project=calculator-ui-react
+```
+
 ## Storybook Setup Configuration
 ### Add Story book support to a project
 ```

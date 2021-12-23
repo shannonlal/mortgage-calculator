@@ -1,5 +1,5 @@
 //import './shared-ui-react.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import {
     OutlinedInput,
     InputAdornment
@@ -21,8 +21,10 @@ type StringCalculatorInputProps = BaseCalculatorInputProps<string>;
 
 const NumericCalculatorInput = ( props: NumericCalculatorInputProps ) =>{
 
+    const [value, setValue] = useState(props.value);
     const change = ( e: React.ChangeEvent<any> ) => {
         props.handleChange( props.eventName, e.target.value);
+        setValue( e.target.value );
     }
 
     if( props.adornmentPosition && props.adornmentValue){
@@ -30,7 +32,7 @@ const NumericCalculatorInput = ( props: NumericCalculatorInputProps ) =>{
             <OutlinedInput
                     id={props.id}
                     data-testid={props.id}
-                    value={props.value}
+                    value={value}
                     fullWidth
                     onChange={(e) => change(e,)}
                     startAdornment={<InputAdornment position={props.adornmentPosition}>{props!.adornmentValue}</InputAdornment>}

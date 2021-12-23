@@ -17,7 +17,7 @@ import {
   getMortgageAmountProps, 
   getPaymentFrequencyProps, 
   getTermProps } from './calculator-input-props.builder';
-import { RateType } from '@mortgage-calculator/models';
+import { InterestRate, RateType } from '@mortgage-calculator/models';
 import { IMortgageInitialParameters, loadMortgageInitialParameters } from './calculator-input-form.delegate';
 
 const useStyles = makeStyles({
@@ -27,10 +27,10 @@ const useStyles = makeStyles({
 });
 
 /* eslint-disable-next-line */
-export interface CalculatorInputFormProps {
+export interface CalculatorInputFormProps extends IMortgageInitialParameters {
   mortgageAmount: number;
   prepaymentAmount: number;
-  interestRate: number;
+  interestRate: InterestRate;
   amortizationYear: number;
   amortizationMonth: number;
   interestRateType: RateType;
@@ -42,23 +42,23 @@ export interface CalculatorInputFormProps {
 export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
 
 
- const [ mortgageParameters, setMortgageParameters ] = useState<IMortgageInitialParameters> ({
+ /*const [ mortgageParameters, setMortgageParameters ] = useState<IMortgageInitialParameters> ({
   interestRate: undefined,
   amortizationPeriod: undefined,
   paymentFrequencies: [],
   terms: []
- });
+ });*/
 
   //Need a function to load the data and set the variables to local values
   // Load the data only once
-  useEffect( () => {
+  /*useEffect( () => {
     const loadInitialComponentData = async() =>{
       console.log('Loading Effect');
       const initialMortgageDetails:IMortgageInitialParameters = await loadMortgageInitialParameters();
       setMortgageParameters({...initialMortgageDetails})
     }
     loadInitialComponentData();
-  }, []);
+  }, []);*/
 
   const classes = useStyles();
   return (
@@ -86,7 +86,7 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
           <Typography variant="body1">Interest Rate:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <NumericCalculatorInput { ...getInterestRateProps( props.interestRate, props.handleChange)}
+          <NumericCalculatorInput { ...getInterestRateProps( props.interestRate.rate, props.handleChange)}
             />
         </Grid>
 
@@ -95,10 +95,10 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
         </Grid>
         <Grid item container xs={7} className={classes.fieldBottom}>
           <Grid item xs={6}>
-            <CalculatorSelect { ...getAmortizationYearsProps( props.handleChange, mortgageParameters?.amortizationPeriod?.years ) }/>
+            <CalculatorSelect { ...getAmortizationYearsProps( props.handleChange, props?.amortizationPeriod?.years ) }/>
           </Grid>
           <Grid item xs={6}>
-          <CalculatorSelect { ...getAmortizationMonthsProps( props.handleChange, mortgageParameters?.amortizationPeriod?.months) }/>
+          <CalculatorSelect { ...getAmortizationMonthsProps( props.handleChange, props?.amortizationPeriod?.months) }/>
           </Grid>
         </Grid>
 
@@ -106,14 +106,14 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
           <Typography variant="body1">Payment Frequency:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <CalculatorSelect { ...getPaymentFrequencyProps( props.handleChange, mortgageParameters?.paymentFrequencies ) }/>
+          <CalculatorSelect { ...getPaymentFrequencyProps( props.handleChange, props?.paymentFrequencies ) }/>
         </Grid>
 
         <Grid item xs={5}>
           <Typography variant="body1">Term:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <CalculatorSelect { ...getTermProps( props.handleChange, mortgageParameters?.terms ) }/>
+          <CalculatorSelect { ...getTermProps( props.handleChange, props?.terms ) }/>
         </Grid>
       </Grid>
 

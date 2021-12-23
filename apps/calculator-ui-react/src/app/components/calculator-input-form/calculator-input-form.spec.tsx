@@ -12,7 +12,10 @@ describe('CalculatorInputForm', () => {
       const inputFormProps: CalculatorInputFormProps = {
         mortgageAmount: 100000,
         prepaymentAmount: 10000,
-        interestRate: 2.00,
+        interestRate: {
+          rate:2.00,
+          type: RateType.FIXED
+        },
         amortizationYear: 5,
         amortizationMonth: 2,
         interestRateType: RateType.FIXED,

@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  OutlinedInput,
-  InputAdornment,
-  Typography,
-  Button,
-  FormControl,
-  Select,
-  Box
-} from "@material-ui/core";
-// import MortgageCalculationSummary from "./mortgage-calculation-summary.component";
-import { generateOptionsHelpers } from "./mortgage-calculator.helpers";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
 import { RateType } from "@mortgage-calculator/models";
 
@@ -25,7 +13,9 @@ const MortgageCalculator = () => {
   const classes = useStyles();
 
   // update initial mortgageDetails state on user entry
-  const handleChange = (event: string, eventName :number|string) => {
+  const handleChange = (eventName: string, eventValue :number|string) => {
+
+    console.log(`Event name ${eventName} Value ${eventValue}`);
     /*setMortgageDetails({
       ...mortgageDetails,
       [eventName]: event.target.value

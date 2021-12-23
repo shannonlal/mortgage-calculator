@@ -49,7 +49,7 @@ export const getTerms = async():Promise<Term[]> => {
  * 
  * @returns 
  */
- export const getInterestRate = async( rateType: string):Promise<InterestRate> => {
+ export const getInterestRate = async( rateType: RateType):Promise<InterestRate> => {
 
     const interestRate: InterestRate = {
         type: RateType.FIXED,

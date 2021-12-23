@@ -6,7 +6,7 @@ describe( 'Calculator Input Form Delegate ', () =>{
         try{
             const rst: IMortgageInitialParameters = await loadMortgageInitialParameters();
             expect( rst ).toBeDefined();
-            expect
+
         }catch( err ){
             expect( err )
         }

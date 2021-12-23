@@ -13,19 +13,15 @@ export interface IMortgageInitialParameters {
  * @param rateType 
  */
 export const loadMortgageInitialParameters = async ( rateType: RateType =RateType.FIXED ): Promise<IMortgageInitialParameters> =>{
-    try {
-        const terms: Term[] = await getTerms();
-        const interestRate:InterestRate = await getInterestRate( rateType);
-        const amortizationPeriod: AmortizationPeriod = await getAmortizationPeriod();
-        const paymentFrequencies: PaymentFrequency[] = await getPaymentFrequency();
+    const terms: Term[] = await getTerms();
+    const interestRate:InterestRate = await getInterestRate( rateType);
+    const amortizationPeriod: AmortizationPeriod = await getAmortizationPeriod();
+    const paymentFrequencies: PaymentFrequency[] = await getPaymentFrequency();
 
-        return {
-            terms,
-            interestRate,
-            amortizationPeriod,
-            paymentFrequencies,
-        };
-    }catch( err ){
-        throw err;
-    }
+    return {
+        terms,
+        interestRate,
+        amortizationPeriod,
+        paymentFrequencies,
+    };
 };

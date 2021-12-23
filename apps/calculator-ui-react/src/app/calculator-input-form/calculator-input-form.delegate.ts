@@ -2,10 +2,10 @@ import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } fr
 import {getAmortizationPeriod, getInterestRate, getPaymentFrequency, getTerms} from './calculator-input-form.mock';
 
 export interface IMortgageInitialParameters {
-    interestRate: InterestRate,
-    amortizationPeriod: AmortizationPeriod,
-    paymentFrequencies: PaymentFrequency[],
-    terms: Term[]
+    interestRate?: InterestRate,
+    amortizationPeriod?: AmortizationPeriod,
+    paymentFrequencies?: PaymentFrequency[],
+    terms?: Term[]
 };
 
 /**

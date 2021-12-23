@@ -32,28 +32,28 @@ describe( 'Calculator Input Props Builder ', () =>{
 
     it('Should test getAmortizationYearsProps', ()=>{
         expect( getAmortizationYearsProps).toBeDefined();
-        const amortizationYearProps: CalculatorSelectProps<AmortizationYear>  = getAmortizationYearsProps( handleChange );
+        const amortizationYearProps: CalculatorSelectProps<AmortizationYear>  = getAmortizationYearsProps( handleChange, undefined );
         expect( amortizationYearProps ).toBeDefined();
         expect( amortizationYearProps.optionsList.length).toBe( 0 );
     });
 
     it('Should test getAmortizationMonthsProps', ()=>{
         expect( getAmortizationMonthsProps).toBeDefined();
-        const amortizationMonthProps: CalculatorSelectProps<AmortizationMonth>  = getAmortizationMonthsProps( handleChange );
+        const amortizationMonthProps: CalculatorSelectProps<AmortizationMonth>  = getAmortizationMonthsProps( handleChange, undefined );
         expect( amortizationMonthProps ).toBeDefined();
         expect( amortizationMonthProps.optionsList.length).toBe( 0 );
     });
 
     it('Should test getPaymentFrequencyProps', ()=>{
         expect( getPaymentFrequencyProps).toBeDefined();
-        const paymentFrequencyProps: CalculatorSelectProps<AmortizationMonth>  = getPaymentFrequencyProps( handleChange );
+        const paymentFrequencyProps: CalculatorSelectProps<AmortizationMonth>  = getPaymentFrequencyProps( handleChange, undefined );
         expect( paymentFrequencyProps ).toBeDefined();
         expect( paymentFrequencyProps.optionsList.length).toBe( 0 );
     });
 
     it('Should test getTermProps', ()=>{
         expect( getTermProps).toBeDefined();
-        const termsProps: CalculatorSelectProps<Term>  = getTermProps( handleChange );
+        const termsProps: CalculatorSelectProps<Term>  = getTermProps( handleChange, undefined );
         expect( termsProps ).toBeDefined();
         expect( termsProps.optionsList.length).toBe( 0 );
     });

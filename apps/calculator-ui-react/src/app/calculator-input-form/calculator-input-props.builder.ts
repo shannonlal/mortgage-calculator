@@ -34,38 +34,77 @@ export const getInterestRateProps = (interestRate: number, handleChange: ( event
     };
 };
 
-export const getAmortizationYearsProps = ( handleChange: ( eventName: string, value:number|string ) => void) : CalculatorSelectProps<AmortizationYear> => {
-    return {
-      id: 'amortization-year-select-id',
-      handleChange,
-      eventName: 'amortizationYear',
-      optionsList:[],
-    };
+export const getAmortizationYearsProps = ( handleChange: ( eventName: string, value:number|string ) => void, optionsList: AmortizationYear[]| undefined) : CalculatorSelectProps<AmortizationYear> => {
+    if( optionsList === undefined ){
+        return {
+            id: 'amortization-year-select-id',
+            handleChange,
+            eventName: 'amortizationYear',
+            optionsList:[]
+          };
+    } else {
+        return {
+            id: 'amortization-year-select-id',
+            handleChange,
+            eventName: 'amortizationYear',
+            optionsList
+          };
+    }
 ;}
 
-export const getAmortizationMonthsProps = (handleChange: ( eventName: string, value:number|string ) => void): CalculatorSelectProps<AmortizationMonth> => {
-    return {
-      id: 'amortization-month-select-id',
-      handleChange,
-      eventName: 'amortizationMonth',
-      optionsList:[],
-    };
+export const getAmortizationMonthsProps = (handleChange: ( eventName: string, value:number|string ) => void, optionsList: AmortizationMonth[] | undefined): CalculatorSelectProps<AmortizationMonth> => {
+    if( optionsList === undefined ){
+        return {
+            id: 'amortization-month-select-id',
+            handleChange,
+            eventName: 'amortizationMonth',
+            optionsList:[]
+          };
+    } else {
+        return {
+            id: 'amortization-month-select-id',
+            handleChange,
+            eventName: 'amortizationMonth',
+            optionsList,
+          };
+    } 
+
 };
 
-export const getPaymentFrequencyProps = (handleChange: ( eventName: string, value:number|string ) => void): CalculatorSelectProps<PaymentFrequency> => {
-    return {
-      id: 'payment-frequency-select-id',
-      handleChange,
-      eventName: 'paymentFrequency',
-      optionsList:[],
-    };
+export const getPaymentFrequencyProps = (handleChange: ( eventName: string, value:number|string ) => void, optionsList: PaymentFrequency[] | undefined): CalculatorSelectProps<PaymentFrequency> => {
+    if( optionsList === undefined ){
+        return {
+            id: 'payment-frequency-select-id',
+            handleChange,
+            eventName: 'paymentFrequency',
+            optionsList:[]
+          };
+    } else {
+        return {
+            id: 'payment-frequency-select-id',
+            handleChange,
+            eventName: 'paymentFrequency',
+            optionsList
+          };
+    }
 };
   
-export const getTermProps = ( handleChange: ( eventName: string, value:number|string ) => void ): CalculatorSelectProps<Term> => {
-    return {
-      id: 'term-select-id',
-      handleChange,
-      eventName: 'term',
-      optionsList:[],
-    };
+export const getTermProps = ( handleChange: ( eventName: string, value:number|string ) => void, optionsList: Term[] | undefined ): CalculatorSelectProps<Term> => {
+    if( optionsList === undefined ){
+        return {
+            id: 'term-select-id',
+            handleChange,
+            eventName: 'term',
+            optionsList: []
+          };
+    } else {
+        return {
+            id: 'term-select-id',
+            handleChange,
+            eventName: 'term',
+            optionsList
+        }
+    }
+    
+
 };

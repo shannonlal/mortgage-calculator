@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
 import { RateType } from "@mortgage-calculator/models";
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { calculateMortgage } from  '../store/mortgageSlice';
 
 const useStyles = makeStyles({
   fieldBottom: {
@@ -11,6 +13,7 @@ const useStyles = makeStyles({
 
 const MortgageCalculator = () => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
 
   // update initial mortgageDetails state on user entry
   const handleChange = (eventName: string, eventValue :number|string) => {
@@ -20,6 +23,8 @@ const MortgageCalculator = () => {
       ...mortgageDetails,
       [eventName]: event.target.value
     });*/
+
+    //dispatch( calculateMortgage() )
   };
 
   const [mortgageDetails, setMortgageDetails] = useState<CalculatorInputFormProps>({

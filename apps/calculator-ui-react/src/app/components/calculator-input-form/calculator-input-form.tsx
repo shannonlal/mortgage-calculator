@@ -1,5 +1,5 @@
 import './calculator-input-form.module.scss';
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -40,7 +40,6 @@ export interface CalculatorInputFormProps {
 }
 
 export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
-
 
  const [ mortgageParameters, setMortgageParameters ] = useState<IMortgageInitialParameters> ({
   interestRate: undefined,

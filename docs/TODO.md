@@ -1,13 +1,13 @@
-## Rest API
+# Redux Support
+1. Add Unit Testing for store and slice
+2. Add asyncRedux Support help
 
-- Postman unit testing
-- Track Requests and responses
-
-## Additional Rest Endpoints
-
-1. Get Amortization Period
-2. Payment Frequency
-3. Get Current Interest Rate
+# Kubernetes Support
+1. Deploy NodeJS Server to minikube
+2. Deploy NGINX and route to NodeJS Server
+3. Helm Charts Deployment
+4. Configure ModSecurity
+5. Let's Encrypt
 
 ## Rest Clean up
 

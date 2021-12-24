@@ -1,13 +1,6 @@
-## Rest API
-
-- Postman unit testing
-- Track Requests and responses
-
-## Additional Rest Endpoints
-
-1. Get Amortization Period
-2. Payment Frequency
-3. Get Current Interest Rate
+# Redux Support
+1. Add Unit Testing for store and slice
+2. Add asyncRedux Support help
 
 ## Rest Clean up
 

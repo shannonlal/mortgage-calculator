@@ -18,4 +18,18 @@ describe('calculator Mortgage Slice', () => {
         expect( initialState.mortgageDetails.amortizationMonth).toBe(2);
 
     });
+
+    it( 'should generate mortgage calculation', () => {
+        const state: MortgageDetailsState = store.getState().mortgage;
+
+        store.dispatch( calculateMortgage({...state.mortgageDetails,
+            term:6, interestRate:3.00
+        } ));
+
+        const updatedState = store.getState().mortgage.mortgageDetails;
+
+        expect( updatedState ).toBeDefined();
+        expect( updatedState.term).toBe(6);
+        expect( updatedState.interestRate).toBe(3.00);
+    })
 });

@@ -15,4 +15,14 @@ describe('HealthCheckController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  it('should get health check', async () => {
+    try{
+      const healthCheck = await controller.getHealthStatus();
+      expect( healthCheck ).toBeDefined();
+      expect( healthCheck.statusId ).toBe( '4' );
+    } catch (err){
+      expect( err ).toBeUndefined();
+    }
+  });
 });

@@ -16,5 +16,5 @@ spec:
         - name: calculator
           image: calculator-api
           ports:
-            - containerPort: 3000
+            - containerPort: 3333
           imagePullPolicy: Never # Image should not be pulled

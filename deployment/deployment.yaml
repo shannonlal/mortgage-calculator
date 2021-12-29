@@ -18,3 +18,10 @@ spec:
           ports:
             - containerPort: 3333
           imagePullPolicy: Never # Image should not be pulled
+          livenessProbe:
+            httpGet:
+              path: /api/health-check
+              port: 3333
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 2

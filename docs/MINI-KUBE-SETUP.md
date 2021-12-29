@@ -19,6 +19,24 @@ minikube dashboard
 
 # Minikube Deployment
 
+## Setup Environment (ConfigMap) 
+The following command will deploy config map to the environment
+```
+kubectl apply -f deployment/envs.yaml
+```
+
+## Get the list of config maps
+
+```
+kubectl get configmap
+```
+
+## Get the data from the config map
+
+```
+kubectl get configmaps calculator-envs -o yaml
+```
+
 ## Deploy the Deployment
 ```
 kubectl apply -f deployment/deployment.yaml

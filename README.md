@@ -114,10 +114,15 @@ A list of common NX Commands for development:
 A list of common git commands used during development:
 [GIT Helper](docs/GIT-HELPER-COMMANDS.md)
 
-# TO Do list
+# To Do list
 
 There is a small TODO file that is being used:
 [TODO](docs/TODO.md)
+
+# Kubernetes configuration
+
+There is a small file with some helper configuration
+[Kubernetes Helper](docs/MINI-KUBE-SETUP.md)
 
 There is also a project tracked in github
 

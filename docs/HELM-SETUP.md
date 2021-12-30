@@ -23,3 +23,19 @@ helm search hub prometheus-operator
 ```
 helm create calculator
 ```
+
+# Install a Helm Chart for a project
+
+```
+helm upgrade --install test-app calculator
+```
+
+# List Helm Releases
+```
+helm list
+```
+
+# Uninstall Helm Release
+```
+helm uninstall test-app
+```

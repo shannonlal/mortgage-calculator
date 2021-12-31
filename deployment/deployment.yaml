@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: calculator
-          image: calculator-api
+          image: shannonlal/calculator-api:0.0.0
           ports:
             - containerPort: 3333
-          imagePullPolicy: Never # Image should not be pulled
+          imagePullPolicy: IfNotPresent # Image should not be pulled
           livenessProbe:
             httpGet:
               path: /api/health-check

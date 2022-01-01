@@ -1,7 +1,7 @@
 import mockAxios from 'jest-mock-axios';
-import { InterestRate, RateType, Term } from '@mortgage-calculator/models';
+import { AmortizationPeriod, InterestRate, RateType, Term } from '@mortgage-calculator/models';
 
-import { getTerms, getRateTypes, getInterestRate } from './shared-ui-services';
+import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod } from './shared-ui-services';
 
 jest.mock('axios');
 
@@ -134,5 +134,53 @@ describe('getInterestRate', () => {
     expect( interestRate ).toBeDefined();
 
     expect( interestRate.rate ).toBe( 1.01 );
+  });
+});
+
+describe('getAmortizationPeriod', () => {
+
+  afterEach(() => {
+    // cleaning up the mess left behind the previous test
+    mockAxios.reset();
+  });
+  it('should be defined', () => {
+    expect(getAmortizationPeriod).toBeDefined();
+  });
+
+  it('should get Amortization Rate', async () =>{
+
+    const ap: AmortizationPeriod =  {
+      months:  [
+            {
+                "label": "1 Month",
+                "value": 1
+            },
+            {
+                "label": "2 Months",
+                "value": 2
+            }
+      ],
+      years : [
+        {
+          "label": "1 Year",
+          "value": 1
+        },
+        {
+            "label": "2 Years",
+            "value": 2
+        }
+      ]
+    };
+
+    mockAxios.get.mockResolvedValueOnce(ap);
+
+    const amortizationPeriod: AmortizationPeriod = await getAmortizationPeriod( 'http://localhost:8080');
+
+    expect( amortizationPeriod ).toBeDefined();
+
+    expect( amortizationPeriod.months ).toBeDefined();
+    expect( amortizationPeriod.months.length ).toBe(2);
+    expect( amortizationPeriod.years ).toBeDefined();
+    expect( amortizationPeriod.years.length ).toBe(2);
   });
 });

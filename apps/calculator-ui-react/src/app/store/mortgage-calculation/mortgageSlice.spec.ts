@@ -1,4 +1,4 @@
-import { store } from './store';
+import { store } from '../store';
 import { calculateMortgage, MortgageDetailsState} from './mortgageSlice';
 
 describe('calculator Mortgage Slice', () => {

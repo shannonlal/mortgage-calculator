@@ -1,5 +1,6 @@
 import { store } from './store';
-import { startLoadingTerms, MortgageFixedDataState } from './fixedDataMortgageCalculator.slice';
+import { startLoadingTerms, loadTermsSuccess, MortgageFixedDataState, loadTermsError } from './fixedDataMortgageCalculator.slice';
+import { Term } from '@mortgage-calculator/models';
 
 describe('Fixed Data Mortgage Calculator Slice', () => {
 
@@ -29,5 +30,39 @@ describe('Fixed Data Mortgage Calculator Slice', () => {
 
         expect( updatedState ).toBeDefined();
         expect( updatedState.terms.loading).toBe(true);
+    });
+
+    it('should dispatch loadTermsSuccess ', () =>{
+        const initialState: MortgageFixedDataState = store.getState().mortgageCalculationFixedDataReduce;
+
+        expect( initialState.terms.data.length).toBe( 0 );
+
+        const terms: Array<Term> =  [
+            {
+                "label": "1 Year",
+                "value": 1
+            },
+            {
+                "label": "2 Years",
+                "value": 2
+          }];
+        store.dispatch( loadTermsSuccess(terms));
+
+
+        const updatedState: MortgageFixedDataState = store.getState().mortgageCalculationFixedDataReduce;
+
+        expect( updatedState ).toBeDefined();
+        expect( updatedState.terms.data.length).toBe(2);
+    });
+
+    it('should dispatch loadTermsError ', () =>{
+        const error = `Unexpected error loading terms`;
+        store.dispatch( loadTermsError(error));
+
+        const updatedState: MortgageFixedDataState = store.getState().mortgageCalculationFixedDataReduce;
+
+        expect( updatedState ).toBeDefined();
+        expect( updatedState.terms.loading).toBe(false);
+        expect( updatedState.terms.errorMessage).toBe(error);
     });
 });

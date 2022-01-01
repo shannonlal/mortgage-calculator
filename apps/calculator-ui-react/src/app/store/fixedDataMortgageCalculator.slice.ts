@@ -23,7 +23,7 @@ const mortgageCalculationFixedData = createSlice({
   initialState,
   name: "mortgageCalculationFixedData",
   reducers: {
-    startLoadingTerms: ( state: MortgageFixedDataState, action: PayloadAction<boolean>)=>{
+    startLoadingTerms: ( state: MortgageFixedDataState, action: PayloadAction<void>)=>{
         state.terms.loading = true;
     },
     loadTermsSuccess: ( state: MortgageFixedDataState, action: PayloadAction<Array<Term>>) => {

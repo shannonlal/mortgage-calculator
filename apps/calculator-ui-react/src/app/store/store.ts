@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import mortgageReducer from './mortgageSlice';
-import mortgageCalculationFixedDataReduce from './fixedDataMortgageCalculator.slice';
+import termsFixedData from './fixeddata/termsData.slice';
 export const store = configureStore({
     reducer: {
         mortgage: mortgageReducer,
-        mortgageCalculationFixedDataReduce: mortgageCalculationFixedDataReduce
+        terms: termsFixedData
     }
 });
 

@@ -1,7 +1,7 @@
 import mockAxios from 'jest-mock-axios';
-import { RateType, Term } from '@mortgage-calculator/models';
+import { InterestRate, RateType, Term } from '@mortgage-calculator/models';
 
-import { getTerms, getRateTypes } from './shared-ui-services';
+import { getTerms, getRateTypes, getInterestRate } from './shared-ui-services';
 
 jest.mock('axios');
 
@@ -94,3 +94,45 @@ describe('getRateTypes', () => {
   });
 });
 
+describe('getInterestRate', () => {
+
+  afterEach(() => {
+    // cleaning up the mess left behind the previous test
+    mockAxios.reset();
+  });
+  it('should be defined', () => {
+    expect(getInterestRate).toBeDefined();
+  });
+
+  it('should get Fixed Interest Rate', async () =>{
+
+    const rt: InterestRate =  {
+      type: RateType.FIXED,
+      rate: 1.21
+    };
+
+    mockAxios.get.mockResolvedValueOnce(rt);
+
+    const interestRate: InterestRate = await getInterestRate( 'http://localhost:8080', 'FIXED' );
+
+    expect( interestRate ).toBeDefined();
+
+    expect( interestRate.rate ).toBe( 1.21 );
+  });
+
+  it('should get Variable Interest Rate', async () =>{
+
+    const rt: InterestRate =  {
+      type: RateType.VARIABLE,
+      rate: 1.01
+    };
+
+    mockAxios.get.mockResolvedValueOnce(rt);
+
+    const interestRate: InterestRate = await getInterestRate( 'http://localhost:8080', 'VARIABLE' );
+
+    expect( interestRate ).toBeDefined();
+
+    expect( interestRate.rate ).toBe( 1.01 );
+  });
+});

@@ -15,7 +15,7 @@ describe('getTerms', () => {
     expect(getTerms).toBeDefined();
   });
 
-  it('should get a list of terms', async () =>{
+  it('should get a list of multiple terms', async () =>{
 
     const t: Array<Term> =  [
       {
@@ -34,5 +34,35 @@ describe('getTerms', () => {
     expect( terms ).toBeDefined();
 
     expect( terms.length ).toBe( 2 );
-  })
+  });
+
+  it('should get a list of one terms', async () =>{
+
+    const t: Array<Term> =  [
+      {
+          "label": "1 Year",
+          "value": 1
+      }];
+
+    mockAxios.get.mockResolvedValueOnce(t);
+
+    const terms: Array<Term> = await getTerms( 'http://localhost:8080' );
+
+    expect( terms ).toBeDefined();
+
+    expect( terms.length ).toBe( 1 );
+  });
+
+  it('should get an empty list of terms', async () =>{
+
+    const t: Array<Term> =  [];
+
+    mockAxios.get.mockResolvedValueOnce(t);
+
+    const terms: Array<Term> = await getTerms( 'http://localhost:8080' );
+
+    expect( terms ).toBeDefined();
+
+    expect( terms.length ).toBe( 0 );
+  });
 });

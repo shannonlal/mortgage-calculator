@@ -1,7 +1,7 @@
 import mockAxios from 'jest-mock-axios';
-import { AmortizationPeriod, InterestRate, RateType, Term } from '@mortgage-calculator/models';
+import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } from '@mortgage-calculator/models';
 
-import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod } from './shared-ui-services';
+import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod, getPaymentFrequency } from './shared-ui-services';
 
 jest.mock('axios');
 
@@ -182,5 +182,47 @@ describe('getAmortizationPeriod', () => {
     expect( amortizationPeriod.months.length ).toBe(2);
     expect( amortizationPeriod.years ).toBeDefined();
     expect( amortizationPeriod.years.length ).toBe(2);
+  });
+});
+
+
+describe('getPaymentFrequency', () => {
+
+  afterEach(() => {
+    // cleaning up the mess left behind the previous test
+    mockAxios.reset();
+  });
+  it('should be defined', () => {
+    expect(getPaymentFrequency).toBeDefined();
+  });
+
+  it('should get Payment Frequencies', async () =>{
+
+    const pf: Array<PaymentFrequency> =  [
+      {
+          "label": "Weekly",
+          "value": 52
+      },
+      {
+          "label": "Accelerated Bi-Weekly",
+          "value": 26
+      },
+      {
+          "label": "Semi-Monthly",
+          "value": 24
+      },
+      {
+          "label": "Monthly",
+          "value": 12
+      }
+  ]
+
+    mockAxios.get.mockResolvedValueOnce(pf);
+
+    const paymentFrequencies: Array<PaymentFrequency> = await getPaymentFrequency( 'http://localhost:8080');
+
+    expect( paymentFrequencies ).toBeDefined();
+
+    expect( paymentFrequencies.length ).toBe(4)
   });
 });

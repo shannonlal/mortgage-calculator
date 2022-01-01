@@ -1,4 +1,4 @@
-import { AmortizationPeriod, InterestRate, RateType, Term } from "@mortgage-calculator/models";
+import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } from "@mortgage-calculator/models";
 import axios from "axios";
 
 // URL Definition
@@ -6,6 +6,7 @@ const GET_TERMS_URL = `/api/term`;
 const GET_RATE_TYPES_URL = `/api/interest-rate/types`;
 const GET_INTEREST_RATE_URL = `/api/interest-rate/`;
 const GET_AMORTIZATION_PERIOD_URL = `/api/amortization`;
+const GET_PAYMENT_FREQUENCY_URL = `/api/payment-frequency`;
 
 /**
  * The following function will make a call to get the list of terms
@@ -51,3 +52,14 @@ export const getAmortizationPeriod = async (baseUrl: string): Promise<Amortizati
 
     return amortizationPeriod;
 };
+
+/**
+ * The following method will get Payment Frequencies
+ * @param baseUrl 
+ * @returns 
+ */
+export const getPaymentFrequency = async (baseUrl: string ): Promise<Array<PaymentFrequency>> => {
+    const paymentFrequencies: Array<PaymentFrequency> = await axios.get( `${baseUrl}${GET_PAYMENT_FREQUENCY_URL}` );
+
+    return paymentFrequencies;
+}

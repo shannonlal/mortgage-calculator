@@ -1,7 +1,7 @@
 import mockAxios from 'jest-mock-axios';
 import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } from '@mortgage-calculator/models';
 
-import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod, getPaymentFrequency } from './shared-ui-services';
+import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod, getPaymentFrequency } from './calculator-fixed-data.services';
 
 jest.mock('axios');
 

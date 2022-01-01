@@ -1,1 +1,1 @@
-export * from './lib/shared-ui-services';
+export * from './lib/calculator-fixed-data.services';

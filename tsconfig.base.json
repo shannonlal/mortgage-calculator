@@ -17,7 +17,8 @@
     "paths": {
       "@mortgage-calculator/calculator-service": ["libs/calculator-service/src/index.ts"],
       "@mortgage-calculator/models": ["libs/models/src/index.ts"],
-      "@mortgage-calculator/shared-ui-react": ["libs/shared-ui-react/src/index.ts"]
+      "@mortgage-calculator/shared-ui-react": ["libs/shared-ui-react/src/index.ts"],
+      "@mortgage-calculator/shared-ui-services": ["libs/shared-ui-services/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

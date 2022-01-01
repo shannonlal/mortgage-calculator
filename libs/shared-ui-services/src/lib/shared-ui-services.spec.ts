@@ -1,7 +1,7 @@
 import mockAxios from 'jest-mock-axios';
-import { Term } from '@mortgage-calculator/models';
+import { RateType, Term } from '@mortgage-calculator/models';
 
-import { getTerms } from './shared-ui-services';
+import { getTerms, getRateTypes } from './shared-ui-services';
 
 jest.mock('axios');
 
@@ -66,3 +66,31 @@ describe('getTerms', () => {
     expect( terms.length ).toBe( 0 );
   });
 });
+
+describe('getRateTypes', () => {
+
+  afterEach(() => {
+    // cleaning up the mess left behind the previous test
+    mockAxios.reset();
+  });
+  it('should be defined', () => {
+    expect(getRateTypes).toBeDefined();
+  });
+
+  it('should get a list of Rate Types', async () =>{
+
+    const rt: Array<RateType> =  [
+      RateType.FIXED,
+      RateType.VARIABLE
+      ];
+
+    mockAxios.get.mockResolvedValueOnce(rt);
+
+    const rateTypes: Array<RateType> = await getRateTypes( 'http://localhost:8080' );
+
+    expect( rateTypes ).toBeDefined();
+
+    expect( rateTypes.length ).toBe( 2 );
+  });
+});
+

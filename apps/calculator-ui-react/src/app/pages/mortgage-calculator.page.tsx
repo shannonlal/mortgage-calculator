@@ -65,7 +65,6 @@ const MortgageCalculator = () => {
 
   // calculate mortgage on initial render
   useEffect(() => {
-    console.log('Hello Data');
     loadInitialData();
   }, []);
 

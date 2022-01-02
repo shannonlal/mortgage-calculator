@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
-import { AmortizationPeriod, MortgageDetails, RateType, Term } from "@mortgage-calculator/models";
+import { AmortizationPeriod, MortgageDetails, PaymentFrequency, RateType, Term } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
-import { fetchAmoritizationPeriod, fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
+import { fetchAmoritizationPeriod, fetchPaymentFrequency, fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
 
 const useStyles = makeStyles({
   fieldBottom: {
@@ -28,11 +28,14 @@ const MortgageCalculator = () => {
   const rateTypesError: string = useAppSelector( state => state.rateType.errorMessage);
   const amortizationPeriod: AmortizationPeriod = useAppSelector( state => state.amortization.data);
   const amortizationError: string  = useAppSelector( state => state.amortization.errorMessage );
+  const paymentFrequency: Array<PaymentFrequency> = useAppSelector( state => state.paymentFrequency.data );
+  const paymentFrequencyError: string = useAppSelector( state => state.paymentFrequency.errorMessage );
 
   const loadInitialData = async () => {
     await fetchTerms();
     await fetchRateTypes();
     await fetchAmoritizationPeriod();
+    await fetchPaymentFrequency();
   }
 
   const [mortgageDetails, setMortgageDetails] = useState<MortgageDetails>({

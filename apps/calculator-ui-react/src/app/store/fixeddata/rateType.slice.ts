@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RateType } from "@mortgage-calculator/models";
 import { LoadingState } from "../models";
 
 const initialState: LoadingState<Array<string>> = {

@@ -16,7 +16,6 @@ const termsFixedData = createSlice({
         state.loading = true;
     },
     loadTermsSuccess: ( state: LoadingState<Array<Term>> , action: PayloadAction<Array<Term>>) => {
-        console.log( 'Get Payload', action);
         state.loading = false;
         state.data = action.payload;
     },

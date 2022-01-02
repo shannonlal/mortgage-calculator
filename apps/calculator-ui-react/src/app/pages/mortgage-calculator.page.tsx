@@ -4,7 +4,7 @@ import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calc
 import { MortgageDetails, RateType, Term } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
-import { fetchTerms } from "../store/fixeddata/fixedData.effect";
+import { fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
 
 const useStyles = makeStyles({
   fieldBottom: {
@@ -22,12 +22,16 @@ const MortgageCalculator = () => {
      }) )
   }
   // update initial mortgageDetails state on user entry
-  const terms: Array<Term> = useAppSelector( state => state.terms.data);
+  const terms: Array<Term> = useAppSelector( state => state.terms.data );
+  const termsError: string = useAppSelector ( state => state.terms.errorMessage );
+  const rateTypes: Array<string> = useAppSelector( state => state.rateType.data);
+  const rateTypesError: string = useAppSelector( state => state.rateType.errorMessage);
 
   console.log('Main terms', terms);
 
   const loadInitialData = async () => {
     await fetchTerms();
+    await fetchRateTypes();
   }
 
   const [mortgageDetails, setMortgageDetails] = useState<MortgageDetails>({

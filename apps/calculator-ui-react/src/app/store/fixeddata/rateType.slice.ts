@@ -19,7 +19,8 @@ const rateTypeFixedData = createSlice({
         state.data = action.payload
     },
     loadRateTypeError: (state: LoadingState<Array<string>> , action: PayloadAction<string>) => {
-        state.errorMessage = action.payload
+        state.errorMessage = action.payload;
+        state.loading = false;
     }
   },
 });

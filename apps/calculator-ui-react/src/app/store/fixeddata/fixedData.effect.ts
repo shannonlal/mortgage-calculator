@@ -22,10 +22,28 @@ export const fetchTerms = async (): Promise<void> => {
 }
 
 /**
- * The following method will get the terms and load them into the store
+ * The following method will get the rate types and load them into the store
  * @returns 
  */
  export const fetchRateTypes = async (): Promise<void> => {
+    try{
+        store.dispatch( startLoadingRateType());
+
+        const rateTypes: Array<RateType> = await getRateTypes( baseUrl );
+
+        const rateTypeNames: Array<string> = rateTypes.map (rt => rt.toString())
+
+        store.dispatch( loadRateTypeSuccess( rateTypeNames ));
+    }catch(err){
+        store.dispatch( loadRateTypeError( `Unexpected error loading rate types` ));
+    }
+}
+
+/**
+ * The following method will get the amortization period and load them into the store
+ * @returns 
+ */
+ export const fetchAmoritizationPeriod = async (): Promise<void> => {
     try{
         store.dispatch( startLoadingRateType());
 

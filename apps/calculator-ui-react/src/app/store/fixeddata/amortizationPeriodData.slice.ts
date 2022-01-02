@@ -24,6 +24,7 @@ const amortizationPeriodFixedData = createSlice({
     },
     loadAmoritizationPeriodError: (state: LoadingState<AmortizationPeriod> , action: PayloadAction<string>) => {
         state.errorMessage = action.payload
+        state.loading = false;
     }
   },
 });

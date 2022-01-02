@@ -1,5 +1,5 @@
 export interface LoadingState<T> {
-    data?:T;
+    data:T;
     loading: boolean;
     errorMessage: string;
 };

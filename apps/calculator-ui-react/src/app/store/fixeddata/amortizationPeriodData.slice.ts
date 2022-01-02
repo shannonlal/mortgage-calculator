@@ -3,7 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoadingState } from "../models";
 
 const initialState: LoadingState<AmortizationPeriod> = {
-    data: undefined,
+    data: {
+        months:[],
+        years: []
+    },
     loading: false,
     errorMessage:''
 };

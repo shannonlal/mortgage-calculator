@@ -15,7 +15,6 @@ export const fetchTerms = async (): Promise<void> => {
         const terms: Array<Term> = await getTerms( baseUrl );
 
         store.dispatch( loadTermsSuccess( terms ));
-
     }catch(err){
         store.dispatch( loadTermsError( `Unexpected error loading terms` ));
     }

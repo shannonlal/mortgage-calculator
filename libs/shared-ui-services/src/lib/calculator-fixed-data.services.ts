@@ -15,7 +15,6 @@ const GET_PAYMENT_FREQUENCY_URL = `/api/payment-frequency`;
  */
 export const getTerms = async ( baseUrl: string ): Promise<Array<Term>> => {
     const terms: AxiosResponse<Array<Term>> = await axios.get( `${baseUrl}${GET_TERMS_URL}` );
-    debugger;
     return terms.data;
 };
 

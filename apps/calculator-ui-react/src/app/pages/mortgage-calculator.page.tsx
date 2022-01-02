@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
-import { MortgageDetails, RateType } from "@mortgage-calculator/models";
+import { MortgageDetails, RateType, Term } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { calculateMortgage } from  '../store/mortgageSlice';
+import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
+import { fetchTerms } from "../store/fixeddata/fixedData.effect";
 
 const useStyles = makeStyles({
   fieldBottom: {
@@ -21,7 +22,13 @@ const MortgageCalculator = () => {
      }) )
   }
   // update initial mortgageDetails state on user entry
+  const terms: Array<Term> = useAppSelector( state => state.terms.data);
 
+  console.log('Main terms', terms);
+
+  const loadInitialData = async () => {
+    await fetchTerms();
+  }
 
   const [mortgageDetails, setMortgageDetails] = useState<MortgageDetails>({
       mortgageAmount: 100000,
@@ -51,6 +58,7 @@ const MortgageCalculator = () => {
   // calculate mortgage on initial render
   useEffect(() => {
     console.log('Hello Data');
+    loadInitialData();
   }, []);
 
   const inputPropoForm: CalculatorInputFormProps = {

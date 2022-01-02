@@ -10,14 +10,15 @@ const initialState: LoadingState<Array<Term>> = {
 
 const termsFixedData = createSlice({
   initialState,
-  name: "mortgageCalculationFixedData",
+  name: "terms",
   reducers: {
     startLoadingTerms: ( state: LoadingState<Array<Term>> , action: PayloadAction<void>)=>{
         state.loading = true;
     },
     loadTermsSuccess: ( state: LoadingState<Array<Term>> , action: PayloadAction<Array<Term>>) => {
+        console.log( 'Get Payload', action);
         state.loading = false;
-        state.data = action.payload
+        state.data = action.payload;
     },
     loadTermsError: (state: LoadingState<Array<Term>> , action: PayloadAction<string>) => {
         state.errorMessage = action.payload

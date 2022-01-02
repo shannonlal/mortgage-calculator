@@ -3,3 +3,7 @@ export interface LoadingState<T> {
     loading: boolean;
     errorMessage: string;
 };
+
+export interface ValidationError {
+    errorMessage: string;
+}

@@ -3,12 +3,14 @@ import mortgageReducer from './mortgage-calculation/mortgageSlice';
 import termsFixedData from './fixeddata/termsData.slice';
 import rateTypeFixedData from './fixeddata/rateType.slice';
 import amortizationPeriodData from './fixeddata/amortizationPeriodData.slice';
+import paymentFrequencyData from './fixeddata/paymentFrequencyData.slice';
 export const store = configureStore({
     reducer: {
         mortgage: mortgageReducer,
         terms: termsFixedData,
         rateType: rateTypeFixedData,
-        amortization: amortizationPeriodData
+        amortization: amortizationPeriodData,
+        paymentFrequency: paymentFrequencyData
     }
 });
 

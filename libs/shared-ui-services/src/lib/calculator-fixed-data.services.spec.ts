@@ -1,9 +1,34 @@
 import mockAxios from 'jest-mock-axios';
-import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } from '@mortgage-calculator/models';
+import { AxiosResponse } from 'axios';
+import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Selectable, Term } from '@mortgage-calculator/models';
 
 import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod, getPaymentFrequency } from './calculator-fixed-data.services';
 
 jest.mock('axios');
+
+const getMockResponse = <T>( t:Array<T> ): AxiosResponse<Array<T>> => {
+  const response: AxiosResponse<Array<T>> = {
+    data: t,
+    status: 200,
+    statusText: 'OK',
+    config: undefined,
+    headers: {}
+  };
+
+  return response;
+}
+
+const getMockSingleResponse = <T>( t:T): AxiosResponse<T> => {
+  const response: AxiosResponse<T> = {
+    data: t,
+    status: 200,
+    statusText: 'OK',
+    config: undefined,
+    headers: {}
+  };
+
+  return response;
+}
 
 describe('getTerms', () => {
 
@@ -17,7 +42,8 @@ describe('getTerms', () => {
 
   it('should get a list of multiple terms', async () =>{
 
-    const t: Array<Term> =  [
+    const t: AxiosResponse<Array<Term>> = getMockResponse(
+      [
       {
           "label": "1 Year",
           "value": 1
@@ -25,7 +51,8 @@ describe('getTerms', () => {
       {
           "label": "2 Years",
           "value": 2
-    }];
+    }]
+    );
 
     mockAxios.get.mockResolvedValueOnce(t);
 
@@ -38,11 +65,11 @@ describe('getTerms', () => {
 
   it('should get a list of one terms', async () =>{
 
-    const t: Array<Term> =  [
+    const t: AxiosResponse<Array<Term>> =  getMockResponse([
       {
           "label": "1 Year",
           "value": 1
-      }];
+      }]);
 
     mockAxios.get.mockResolvedValueOnce(t);
 
@@ -55,7 +82,7 @@ describe('getTerms', () => {
 
   it('should get an empty list of terms', async () =>{
 
-    const t: Array<Term> =  [];
+    const t: AxiosResponse<Array<Term>> =  getMockResponse([]);
 
     mockAxios.get.mockResolvedValueOnce(t);
 
@@ -79,10 +106,10 @@ describe('getRateTypes', () => {
 
   it('should get a list of Rate Types', async () =>{
 
-    const rt: Array<RateType> =  [
+    const rt: AxiosResponse<Array<RateType>> =  getMockResponse([
       RateType.FIXED,
       RateType.VARIABLE
-      ];
+      ]);
 
     mockAxios.get.mockResolvedValueOnce(rt);
 
@@ -106,10 +133,10 @@ describe('getInterestRate', () => {
 
   it('should get Fixed Interest Rate', async () =>{
 
-    const rt: InterestRate =  {
+    const rt: AxiosResponse<InterestRate> = getMockSingleResponse({
       type: RateType.FIXED,
       rate: 1.21
-    };
+    });
 
     mockAxios.get.mockResolvedValueOnce(rt);
 
@@ -122,10 +149,10 @@ describe('getInterestRate', () => {
 
   it('should get Variable Interest Rate', async () =>{
 
-    const rt: InterestRate =  {
+    const rt: AxiosResponse<InterestRate> =  getMockSingleResponse({
       type: RateType.VARIABLE,
       rate: 1.01
-    };
+    });
 
     mockAxios.get.mockResolvedValueOnce(rt);
 
@@ -149,7 +176,7 @@ describe('getAmortizationPeriod', () => {
 
   it('should get Amortization Rate', async () =>{
 
-    const ap: AmortizationPeriod =  {
+    const ap: AxiosResponse<AmortizationPeriod> =  getMockSingleResponse({
       months:  [
             {
                 "label": "1 Month",
@@ -170,7 +197,7 @@ describe('getAmortizationPeriod', () => {
             "value": 2
         }
       ]
-    };
+    });
 
     mockAxios.get.mockResolvedValueOnce(ap);
 
@@ -198,7 +225,7 @@ describe('getPaymentFrequency', () => {
 
   it('should get Payment Frequencies', async () =>{
 
-    const pf: Array<PaymentFrequency> =  [
+    const pf: AxiosResponse<Array<PaymentFrequency>> =  getMockResponse([
       {
           "label": "Weekly",
           "value": 52
@@ -215,7 +242,7 @@ describe('getPaymentFrequency', () => {
           "label": "Monthly",
           "value": 12
       }
-  ]
+  ]);
 
     mockAxios.get.mockResolvedValueOnce(pf);
 

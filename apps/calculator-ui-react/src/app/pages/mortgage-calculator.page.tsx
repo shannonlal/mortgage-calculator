@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
-import { MortgageDetails, RateType, Term } from "@mortgage-calculator/models";
+import { AmortizationPeriod, MortgageDetails, RateType, Term } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
-import { fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
+import { fetchAmoritizationPeriod, fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
 
 const useStyles = makeStyles({
   fieldBottom: {
@@ -26,12 +26,13 @@ const MortgageCalculator = () => {
   const termsError: string = useAppSelector ( state => state.terms.errorMessage );
   const rateTypes: Array<string> = useAppSelector( state => state.rateType.data);
   const rateTypesError: string = useAppSelector( state => state.rateType.errorMessage);
-
-  console.log('Main terms', terms);
+  const amortizationPeriod: AmortizationPeriod = useAppSelector( state => state.amortization.data);
+  const amortizationError: string  = useAppSelector( state => state.amortization.errorMessage );
 
   const loadInitialData = async () => {
     await fetchTerms();
     await fetchRateTypes();
+    await fetchAmoritizationPeriod();
   }
 
   const [mortgageDetails, setMortgageDetails] = useState<MortgageDetails>({

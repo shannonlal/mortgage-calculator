@@ -1,9 +1,9 @@
-import { RateType, Term } from '@mortgage-calculator/models';
-import { getTerms, getRateTypes } from '@mortgage-calculator/shared-ui-services';
+import { AmortizationPeriod, RateType, Term } from '@mortgage-calculator/models';
+import { getTerms, getRateTypes, getAmortizationPeriod } from '@mortgage-calculator/shared-ui-services';
 import { store } from '../store';
 import { startLoadingTerms, loadTermsSuccess, loadTermsError } from './termsData.slice';
 import { startLoadingRateType, loadRateTypeSuccess, loadRateTypeError } from './rateType.slice';
-
+import { startLoadingAmoritizationPeriod, loadAmoritizationPeriodSuccess, loadAmoritizationPeriodError } from './amortizationPeriodData.slice';
 const baseUrl = `http://localhost:3333`;
 /**
  * The following method will get the terms and load them into the store
@@ -22,7 +22,7 @@ export const fetchTerms = async (): Promise<void> => {
 }
 
 /**
- * The following method will get the terms and load them into the store
+ * The following method will get the rate types and load them into the store
  * @returns 
  */
  export const fetchRateTypes = async (): Promise<void> => {
@@ -36,5 +36,22 @@ export const fetchTerms = async (): Promise<void> => {
         store.dispatch( loadRateTypeSuccess( rateTypeNames ));
     }catch(err){
         store.dispatch( loadRateTypeError( `Unexpected error loading rate types` ));
+    }
+}
+
+/**
+ * The following method will get the amortization period and load them into the store
+ * @returns 
+ */
+ export const fetchAmoritizationPeriod = async (): Promise<void> => {
+    try{
+        store.dispatch( startLoadingAmoritizationPeriod());
+
+        const amortizationPeriod: AmortizationPeriod = await getAmortizationPeriod( baseUrl );
+
+
+        store.dispatch( loadAmoritizationPeriodSuccess( amortizationPeriod ));
+    }catch(err){
+        store.dispatch( loadAmoritizationPeriodError( `Unexpected error loading Amortization Period` ));
     }
 }

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RateType } from "@mortgage-calculator/models";
 import { LoadingState } from "../models";
 
 const initialState: LoadingState<Array<string>> = {
@@ -20,7 +19,8 @@ const rateTypeFixedData = createSlice({
         state.data = action.payload
     },
     loadRateTypeError: (state: LoadingState<Array<string>> , action: PayloadAction<string>) => {
-        state.errorMessage = action.payload
+        state.errorMessage = action.payload;
+        state.loading = false;
     }
   },
 });

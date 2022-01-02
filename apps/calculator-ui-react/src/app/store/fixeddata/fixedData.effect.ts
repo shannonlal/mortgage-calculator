@@ -1,10 +1,11 @@
-import { AmortizationPeriod, PaymentFrequency, RateType, Term } from '@mortgage-calculator/models';
-import { getTerms, getRateTypes, getAmortizationPeriod, getPaymentFrequency } from '@mortgage-calculator/shared-ui-services';
+import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } from '@mortgage-calculator/models';
+import { getTerms, getRateTypes, getAmortizationPeriod, getPaymentFrequency, getInterestRate } from '@mortgage-calculator/shared-ui-services';
 import { store } from '../store';
 import { startLoadingTerms, loadTermsSuccess, loadTermsError } from './termsData.slice';
 import { startLoadingRateType, loadRateTypeSuccess, loadRateTypeError } from './rateType.slice';
 import { startLoadingAmoritizationPeriod, loadAmoritizationPeriodSuccess, loadAmoritizationPeriodError } from './amortizationPeriodData.slice';
 import { startLoadingPaymentFrequency, loadPaymentFrequencySuccess, loadPaymentFrequencyError } from './paymentFrequencyData.slice';
+import { loadInterestRateError, loadInterestRateSuccess, startLoadingInterestRate } from './interestRateData.slice';
 const baseUrl = `http://localhost:3333`;
 /**
  * The following method will get the terms and load them into the store
@@ -69,5 +70,21 @@ export const fetchTerms = async (): Promise<void> => {
         store.dispatch( loadPaymentFrequencySuccess( paymentFrequencies ));
     }catch(err){
         store.dispatch( loadPaymentFrequencyError( `Unexpected error loading Payment Frequency` ));
+    }
+}
+
+/**
+ * The following method will get the interest rate and load them into the store
+ * @returns 
+ */
+ export const fetchInterestRate = async ( rateType: "FIXED" | "VARIABLE"): Promise<void> => {
+    try{
+        store.dispatch( startLoadingInterestRate());
+
+        const interestRate: InterestRate = await getInterestRate( baseUrl, rateType );
+
+        store.dispatch( loadInterestRateSuccess( interestRate ));
+    }catch(err){
+        store.dispatch( loadInterestRateError( `Unexpected error loading Interest Rate` ));
     }
 }

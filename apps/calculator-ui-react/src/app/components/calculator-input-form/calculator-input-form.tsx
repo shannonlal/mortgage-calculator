@@ -52,7 +52,6 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
   // Load the data only once
   useEffect( () => {
     const loadInitialComponentData = async() =>{
-      console.log('Loading Effect');
       const initialMortgageDetails:IMortgageInitialParameters = await loadMortgageInitialParameters();
       setMortgageParameters({...initialMortgageDetails})
     }

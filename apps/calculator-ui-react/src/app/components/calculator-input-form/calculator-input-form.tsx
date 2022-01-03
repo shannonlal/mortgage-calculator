@@ -1,5 +1,4 @@
 import './calculator-input-form.module.scss';
-import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -37,26 +36,10 @@ export interface CalculatorInputFormProps {
   paymentFrequency: number;
   term: number;
   handleChange: ( eventName: string, value:number|string ) =>void;
+  initialMortgageDetails:IMortgageInitialParameters;
 }
 
 export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
-
- const [ mortgageParameters, setMortgageParameters ] = useState<IMortgageInitialParameters> ({
-  interestRate: undefined,
-  amortizationPeriod: undefined,
-  paymentFrequencies: [],
-  terms: []
- });
-
-  //Need a function to load the data and set the variables to local values
-  // Load the data only once
-  useEffect( () => {
-    const loadInitialComponentData = async() =>{
-      const initialMortgageDetails:IMortgageInitialParameters = await loadMortgageInitialParameters();
-      setMortgageParameters({...initialMortgageDetails})
-    }
-    loadInitialComponentData();
-  }, []);
 
   const classes = useStyles();
   return (
@@ -93,10 +76,10 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
         </Grid>
         <Grid item container xs={7} className={classes.fieldBottom}>
           <Grid item xs={6}>
-            <CalculatorSelect { ...getAmortizationYearsProps( props.handleChange, mortgageParameters?.amortizationPeriod?.years ) }/>
+            <CalculatorSelect { ...getAmortizationYearsProps( props.handleChange, props.initialMortgageDetails?.amortizationPeriod?.years ) }/>
           </Grid>
           <Grid item xs={6}>
-          <CalculatorSelect { ...getAmortizationMonthsProps( props.handleChange, mortgageParameters?.amortizationPeriod?.months) }/>
+          <CalculatorSelect { ...getAmortizationMonthsProps( props.handleChange, props.initialMortgageDetails?.amortizationPeriod?.months) }/>
           </Grid>
         </Grid>
 
@@ -104,14 +87,14 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
           <Typography variant="body1">Payment Frequency:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <CalculatorSelect { ...getPaymentFrequencyProps( props.handleChange, mortgageParameters?.paymentFrequencies ) }/>
+          <CalculatorSelect { ...getPaymentFrequencyProps( props.handleChange, props.initialMortgageDetails?.paymentFrequencies ) }/>
         </Grid>
 
         <Grid item xs={5}>
           <Typography variant="body1">Term:</Typography>
         </Grid>
         <Grid item xs={7} className={classes.fieldBottom}>
-          <CalculatorSelect { ...getTermProps( props.handleChange, mortgageParameters?.terms ) }/>
+          <CalculatorSelect { ...getTermProps( props.handleChange, props.initialMortgageDetails?.terms ) }/>
         </Grid>
       </Grid>
 

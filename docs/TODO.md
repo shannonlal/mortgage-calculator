@@ -1,5 +1,5 @@
 # React App next steps
-1. Update the input component to pass fixed data
+1. ~~Update the input component to pass fixed data~~
 2. Create a GraphQL API to perform calculation
 3. Create a UI component to display the data and perform calculation
 4. Create a NGINX Container to serve the static

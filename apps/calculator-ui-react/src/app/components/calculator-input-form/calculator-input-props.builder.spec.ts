@@ -57,8 +57,4 @@ describe( 'Calculator Input Props Builder ', () =>{
         expect( termsProps ).toBeDefined();
         expect( termsProps.optionsList.length).toBe( 0 );
     });
-    
-    
-    
-
 });

@@ -1,8 +1,6 @@
-
 /**
  * The following is a temporary mock file for generating data
  */
-
 import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Term } from "@mortgage-calculator/models";
 
 /**

@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { CalculationResult } from '../models/calculation-result.model';
+import { CalculationResult } from '../dto/calculation-result.output';
 import { MortgageDetailsInput } from '../dto/mortgage-details.input';
 
 @Injectable()
@@ -15,6 +15,29 @@ export class MortgageCalculationService {
     async calculateMortgae(inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
             this.logger.log(`Calculating the mortgage amount ${inputData}`);
+
+            const calculation: CalculationResult = {
+                id: `1231233213`,
+                monthlyPayment: 1212.31,
+                creationDate: new Date()
+            }
+            return Promise.resolve( calculation );
+        }catch( err ){
+            this.logger.error(`Unexpected error calculating mortgage ${err}`);
+            throw err;
+        }
+    }
+
+
+    /**
+     * The following function will calculate the monthly payment based on the mortgage 
+     * amount only
+     * @param mortgageAmount 
+     * @returns 
+     */
+     async calculateDefaultMortgae(mortgageAmount: number): Promise<CalculationResult> {
+        try{
+            this.logger.log(`Calculating the mortgage amount ${mortgageAmount}`);
 
             const calculation: CalculationResult = {
                 id: `1231233213`,

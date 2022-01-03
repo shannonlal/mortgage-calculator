@@ -1,12 +1,6 @@
 import { Controller, Get, Logger } from '@nestjs/common';
-
+import { HealthStatus  } from '@mortgage-calculator/models';
 const STATUS_ID = process.env.HEALTH_ID|| '4';
-
-interface HealthStatus {
-
-    status: boolean;
-    statusId: string;
-}
 
 @Controller('health-check')
 export class HealthCheckController {

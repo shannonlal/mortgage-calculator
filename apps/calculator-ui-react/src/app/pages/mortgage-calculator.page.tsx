@@ -4,7 +4,8 @@ import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calc
 import { AmortizationPeriod, InterestRate, MortgageDetails, PaymentFrequency, RateType, Term } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
-import { fetchAmoritizationPeriod, fetchInterestRate, fetchPaymentFrequency, fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
+// import { fetchAmoritizationPeriod, fetchInterestRate, fetchPaymentFrequency, fetchRateTypes, fetchTerms } from "../store/fixeddata/fixedData.effect";
+import { loadMortgageInitialParameters, IMortgageInitialParameters } from '../components/calculator-input-form/calculator-input-form.delegate';
 
 const useStyles = makeStyles({
   fieldBottom: {
@@ -22,23 +23,30 @@ const MortgageCalculator = () => {
      }) )
   }
   // update initial mortgageDetails state on user entry
-  const terms: Array<Term> = useAppSelector( state => state.terms.data );
+  //const terms: Array<Term> = useAppSelector( state => state.terms.data );
   const termsError: string = useAppSelector ( state => state.terms.errorMessage );
   const rateTypes: Array<string> = useAppSelector( state => state.rateType.data);
   const rateTypesError: string = useAppSelector( state => state.rateType.errorMessage);
-  const amortizationPeriod: AmortizationPeriod = useAppSelector( state => state.amortization.data);
+  //const amortizationPeriod: AmortizationPeriod = useAppSelector( state => state.amortization.data);
   const amortizationError: string  = useAppSelector( state => state.amortization.errorMessage );
-  const paymentFrequency: Array<PaymentFrequency> = useAppSelector( state => state.paymentFrequency.data );
+  //const paymentFrequency: Array<PaymentFrequency> = useAppSelector( state => state.paymentFrequency.data );
   const paymentFrequencyError: string = useAppSelector( state => state.paymentFrequency.errorMessage );
-  const interestRate: InterestRate = useAppSelector( state => state.interestRate.data );
+  //const interestRate: InterestRate = useAppSelector( state => state.interestRate.data );
   const interestRateError: string = useAppSelector( state => state.interestRate.errorMessage );
 
-  const loadInitialData = async () => {
+  /*const loadInitialData = async () => {
     await fetchTerms();
     await fetchRateTypes();
     await fetchAmoritizationPeriod();
     await fetchPaymentFrequency();
     await fetchInterestRate( 'FIXED' );
+  }*/
+
+  const initialMortgageDetails: IMortgageInitialParameters = {
+    terms: useAppSelector( state => state.terms.data ),
+    interestRate: useAppSelector( state => state.interestRate.data ),
+    amortizationPeriod: useAppSelector( state => state.amortization.data),
+    paymentFrequencies: useAppSelector( state => state.paymentFrequency.data )
   }
 
   const [mortgageDetails, setMortgageDetails] = useState<MortgageDetails>({
@@ -49,7 +57,7 @@ const MortgageCalculator = () => {
       amortizationMonth: 2,
       interestRateType: RateType.FIXED,
       paymentFrequency: 52,
-      term: 5
+      term: 5,
     });
 
     const handleChange = (eventName: string, eventValue :number|string) => {
@@ -68,12 +76,15 @@ const MortgageCalculator = () => {
 
   // calculate mortgage on initial render
   useEffect(() => {
-    loadInitialData();
+    // loadInitialData();
+    loadMortgageInitialParameters();
   }, []);
 
   const inputPropoForm: CalculatorInputFormProps = {
-    ...mortgageDetails, 
-    handleChange
+    ...mortgageDetails,
+    handleChange,
+    initialMortgageDetails
+
   }
 
   return (

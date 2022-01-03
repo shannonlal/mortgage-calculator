@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "c83d48bf-28b9-4095-b6b6-9b9eb0894544",
+		"name": "Mortgage-Calculation-API",
+		"description": "The following is the mortgage calculation api which is used to get data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Health Check Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var status = JSON.parse(responseBody);",
+							"",
+							"tests[\"status\"] = status.status === true;",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{calculationAPIHostname}}/api/health-check",
+					"host": [
+						"{{calculationAPIHostname}}"
+					],
+					"path": [
+						"api",
+						"health-check"
+					]
+				},
+				"description": "The following request will make a call to get health check"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,5 +1,4 @@
 import './calculator-input-form.module.scss';
-import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -41,23 +40,6 @@ export interface CalculatorInputFormProps {
 }
 
 export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
-
- /*const [ mortgageParameters, setMortgageParameters ] = useState<IMortgageInitialParameters> ({
-  interestRate: undefined,
-  amortizationPeriod: undefined,
-  paymentFrequencies: [],
-  terms: []
- });*/
-
-  //Need a function to load the data and set the variables to local values
-  // Load the data only once
-  /*useEffect( () => {
-    const loadInitialComponentData = async() =>{
-      // const initialMortgageDetails:IMortgageInitialParameters = await loadMortgageInitialParameters();
-      //setMortgageParameters({...initialMortgageDetails})
-    }
-    loadInitialComponentData();
-  }, []);*/
 
   const classes = useStyles();
   return (

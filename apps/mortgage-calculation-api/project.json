@@ -1,0 +1,52 @@
+{
+  "root": "apps/mortgage-calculation-api",
+  "sourceRoot": "apps/mortgage-calculation-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/mortgage-calculation-api",
+        "main": "apps/mortgage-calculation-api/src/main.ts",
+        "tsConfig": "apps/mortgage-calculation-api/tsconfig.app.json",
+        "assets": ["apps/mortgage-calculation-api/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/mortgage-calculation-api/src/environments/environment.ts",
+              "with": "apps/mortgage-calculation-api/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "mortgage-calculation-api:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mortgage-calculation-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/mortgage-calculation-api"],
+      "options": {
+        "jestConfig": "apps/mortgage-calculation-api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

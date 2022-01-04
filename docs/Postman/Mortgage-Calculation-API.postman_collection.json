@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "c83d48bf-28b9-4095-b6b6-9b9eb0894544",
+		"name": "Mortgage-Calculation-API",
+		"description": "The following is the mortgage calculation api which is used to get data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Health Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var status = JSON.parse(responseBody);",
+							"",
+							"tests[\"status\"] = status.status === true;",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{calculationAPIHostname}}/api/health-check",
+					"host": [
+						"{{calculationAPIHostname}}"
+					],
+					"path": [
+						"api",
+						"health-check"
+					]
+				},
+				"description": "The following request will make a call to get health check"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Default Mortgage Calculation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var status = JSON.parse(responseBody);",
+							"",
+							"tests[\"status\"] = status.status === true;",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n  getDefaultCalculation(mortgageAmount: 10001\n  ){\n    monthlyPayment,\n    creationDate\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{calculationAPIHostname}}/api/graphql",
+					"host": [
+						"{{calculationAPIHostname}}"
+					],
+					"path": [
+						"api",
+						"graphql"
+					]
+				},
+				"description": "The following request will make a call to get the default mortgage calculation"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mortgage Calculation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var status = JSON.parse(responseBody);",
+							"",
+							"tests[\"status\"] = status.status === true;",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "  mutation calculate{\n    calculateMortgage( inputData: {\n      mortgageAmount: 1000000,\n      prepaymentAmount: 10000,\n      interestRate: 2.01,\n      amortizationYear: 12,\n      amortizationMonth:8,\n      interestRateType: \"FIXED\",\n      paymentFrequency:122,\n      term: 12\n    }){\n      monthlyPayment\n    }\n  }",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{calculationAPIHostname}}/api/graphql",
+					"host": [
+						"{{calculationAPIHostname}}"
+					],
+					"path": [
+						"api",
+						"graphql"
+					]
+				},
+				"description": "The following request will make a call to get the mortgage calculation"
+			},
+			"response": []
+		}
+	]
+}

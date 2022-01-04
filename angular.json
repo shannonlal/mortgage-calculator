@@ -8,6 +8,7 @@
     "calculator-ui-react": "apps/calculator-ui-react",
     "calculator-ui-react-e2e": "apps/calculator-ui-react-e2e",
     "models": "libs/models",
+    "mortgage-calculation-api": "apps/mortgage-calculation-api",
     "shared-ui-react": "libs/shared-ui-react",
     "shared-ui-services": "libs/shared-ui-services"
   }

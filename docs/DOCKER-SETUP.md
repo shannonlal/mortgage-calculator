@@ -38,3 +38,8 @@ NOTE Space before period
 ## To enter a running container
 
 `docker exec -it (CONTAINER ID) bash`
+
+## Start the local development using Docker Compose
+```
+docker-compose up
+```

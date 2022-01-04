@@ -43,3 +43,11 @@ NOTE Space before period
 ```
 docker-compose up
 ```
+
+## Troubleshooting
+If you get an issue where there might be a service running on a particular port.  You can run the following command to get a list of all the services running on a given port
+
+This command will list all services running on TCP port 8082
+```
+netstat -vanp tcp | grep 8082
+```

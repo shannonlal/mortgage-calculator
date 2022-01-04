@@ -3,8 +3,8 @@ services:
   calculator-api:
     image: shannonlal/calculator-api:0.0.0
     ports:
-      - '8081:3333'
+      - '3333:3333'
   mortgage-calculator-api:
     image: shannonlal/mortgage-calculation-api:0.0.0
     ports:
-      - '8082:3334'
+      - '3334:3334'

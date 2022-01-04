@@ -23,7 +23,7 @@ export class MortgageCalculationResolver {
     }
 
     @Query(returns => CalculationResult )
-    async getDefaultCalculation(@Args('inputData') mortgageAmount: number): Promise<CalculationResult> {
+    async getDefaultCalculation(@Args('mortgageAmount') mortgageAmount: number): Promise<CalculationResult> {
         try{
             const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( mortgageAmount );
 

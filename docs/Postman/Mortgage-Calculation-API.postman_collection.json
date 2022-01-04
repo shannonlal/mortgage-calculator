@@ -51,9 +51,9 @@
 					"script": {
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var status = JSON.parse(responseBody);",
+							"var data = JSON.parse(responseBody);",
 							"",
-							"tests[\"status\"] = status.status === true;",
+							"tests[\"data\"] = data.data.getDefaultCalculation.monthlyPayment === 1212.31;",
 							"",
 							"",
 							"",
@@ -95,9 +95,10 @@
 					"script": {
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var status = JSON.parse(responseBody);",
+							"var data = JSON.parse(responseBody);",
 							"",
-							"tests[\"status\"] = status.status === true;",
+							"tests[\"data\"] = data.data.calculateMortgage.monthlyPayment === 1212.31;",
+							"",
 							"",
 							"",
 							"",

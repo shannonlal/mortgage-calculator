@@ -10,7 +10,8 @@
         "outputPath": "dist/apps/mortgage-calculation-api",
         "main": "apps/mortgage-calculation-api/src/main.ts",
         "tsConfig": "apps/mortgage-calculation-api/tsconfig.app.json",
-        "assets": ["apps/mortgage-calculation-api/src/assets"]
+        "assets": ["apps/mortgage-calculation-api/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {

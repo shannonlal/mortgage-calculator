@@ -10,7 +10,10 @@ import { MortgageCalculationModule} from './mortgage-calculation/mortgage-calcul
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
+      path:'api'
     })
-  ]
+  ],
+  controllers: [HealthCheckController],
+  providers: [HealthCheckService]
 })
 export class AppModule {}

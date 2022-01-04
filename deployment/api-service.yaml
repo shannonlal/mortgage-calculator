@@ -4,7 +4,7 @@ metadata:
   name: calculator-service
 spec:
   selector:
-    app: calculator
+    app: calculator-api
   type: LoadBalancer 
   ports:
     - protocol: TCP

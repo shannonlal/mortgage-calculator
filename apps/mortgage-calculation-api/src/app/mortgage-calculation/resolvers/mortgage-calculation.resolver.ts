@@ -13,7 +13,7 @@ export class MortgageCalculationResolver {
     @Mutation(returns => CalculationResult )
     async calculateMortgage(@Args('inputData') inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
-            const calculation: CalculationResult = await this.mortgageCalclationService.calculateMortgae( inputData );
+            const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( inputData.mortgageAmount );
 
             return calculation;
         }catch (err) {
@@ -23,7 +23,7 @@ export class MortgageCalculationResolver {
     }
 
     @Query(returns => CalculationResult )
-    async getDefaultCalculation(@Args('mortgageAmount') mortgageAmount:number): Promise<CalculationResult> {
+    async getDefaultCalculation(@Args('inputData') mortgageAmount: number): Promise<CalculationResult> {
         try{
             const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( mortgageAmount );
 

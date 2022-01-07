@@ -21,7 +21,7 @@ export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails): string =
                 id
                 creationDate
             }
-        }\n","variables":{}}`
+        }","variables":{}}`
 };
 
 /**

@@ -4,7 +4,7 @@ import axios, {AxiosResponse} from "axios";
 // URL Definition
 const CALCULATE_MORTGAGE_URL = `/api/graphql`;
 
-const generateMortgageGraphQL = (mortgageInfo: MortgageDetails): string => {
+export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails): string => {
     return `{
         "query":"  mutation calculate{
             calculateMortgage( inputData: {
@@ -31,6 +31,9 @@ const generateMortgageGraphQL = (mortgageInfo: MortgageDetails): string => {
  * @returns Promise<MortgageResult>
  */
 export const calculateMortgage = async ( baseUrl: string, mortgageInfo: MortgageDetails ): Promise<MortgageResult> => {
-    const mortgageResult : AxiosResponse<MortgageResult> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}` );
+
+    const graphQLMutationQuery:string =  generateMortgageGraphQL( mortgageInfo );
+
+    const mortgageResult : AxiosResponse<MortgageResult> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, graphQLMutationQuery );
     return mortgageResult.data;
 };

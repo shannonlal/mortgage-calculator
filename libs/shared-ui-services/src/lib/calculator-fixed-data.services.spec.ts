@@ -1,6 +1,6 @@
 import mockAxios from 'jest-mock-axios';
 import { AxiosResponse } from 'axios';
-import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType, Selectable, Term } from '@mortgage-calculator/models';
+import { AmortizationPeriod, InterestRate, PaymentFrequency, RateType,  Term } from '@mortgage-calculator/models';
 
 import { getTerms, getRateTypes, getInterestRate, getAmortizationPeriod, getPaymentFrequency } from './calculator-fixed-data.services';
 

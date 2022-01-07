@@ -1,11 +1,9 @@
 import mockAxios from 'jest-mock-axios';
-import { AxiosResponse } from 'axios';
 
-import { generateMortgageGraphQL } from './calculator-mortgage.service';
-import { MortgageDetails, RateType, Term } from '@mortgage-calculator/models';
-import { getTerms } from './calculator-fixed-data.services';
+import { calculateMortgage, generateMortgageGraphQL } from './calculator-mortgage.service';
+import { MortgageDetails, MortgageResult, RateType } from '@mortgage-calculator/models';
 
-
+jest.mock('axios');
 
 describe('getTerms', () => {
 
@@ -17,7 +15,7 @@ describe('getTerms', () => {
     expect( generateMortgageGraphQL ).toBeDefined();
   });
 
-  it('should get a list of multiple terms', async () =>{
+  it('should generate the grqphQL string', async () =>{
 
     const mortgageInfo: MortgageDetails = {
         mortgageAmount: 0,
@@ -30,10 +28,41 @@ describe('getTerms', () => {
         term: 0
     }
 
-    const grqphQLQuery: string = generateMortgageGraphQL( mortgageInfo );
-
-    expect( grqphQLQuery ).toBeDefined();
-
+    const graphQLQuery: string = generateMortgageGraphQL( mortgageInfo );
+    expect( graphQLQuery ).toBeDefined();
   });
+
+  it('should make api call to get graphql response', async () =>{
+
+    const mortgageInfo: MortgageDetails = {
+        mortgageAmount: 0,
+        prepaymentAmount: 0,
+        interestRate: 0,
+        amortizationYear: 0,
+        amortizationMonth: 0,
+        interestRateType: RateType.FIXED,
+        paymentFrequency: 0,
+        term: 0
+    }
+
+    const t =  {
+        "data": {
+            "getDefaultCalculation": {
+                "id":12319234243234234,
+                "monthlyPayment": 1212.31,
+                "creationDate": "2022-01-07T03:09:48.681Z"
+            }
+        }
+    };
+
+    mockAxios.post.mockResolvedValueOnce(t);
+
+    const morgageResult: MortgageResult = await calculateMortgage( 'http://localhost:8080', mortgageInfo );
+
+    expect( morgageResult ).toBeDefined();
+
+    expect( morgageResult.monthlyPayment ).toBe( 1212.31 );
+  });
+
 
 });

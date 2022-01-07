@@ -4,9 +4,12 @@ import axios, {AxiosResponse} from "axios";
 // URL Definition
 const CALCULATE_MORTGAGE_URL = `/api/graphql`;
 
+interface GraphQResponse<T>  {
+    getDefaultCalculation:T
+}
 export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails): string => {
     return `{
-        "query":"  mutation calculate{
+        "query":"mutation calculate{
             calculateMortgage( inputData: {
                 mortgageAmount: ${mortgageInfo.mortgageAmount},
                 prepaymentAmount: ${mortgageInfo.prepaymentAmount},
@@ -34,6 +37,7 @@ export const calculateMortgage = async ( baseUrl: string, mortgageInfo: Mortgage
 
     const graphQLMutationQuery:string =  generateMortgageGraphQL( mortgageInfo );
 
-    const mortgageResult : AxiosResponse<MortgageResult> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, graphQLMutationQuery );
-    return mortgageResult.data;
+
+    const mortgageResult : AxiosResponse<GraphQResponse<MortgageResult>> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, graphQLMutationQuery );
+    return mortgageResult.data.getDefaultCalculation;
 };

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mortgage-app
-          image: shannonlal/mortgage-calculation-api:0.0.0
+          image: shannonlal/mortgage-calculation-api:0.0.1
           ports:
             - containerPort: 3334
           imagePullPolicy: IfNotPresent # Image should not be pulled

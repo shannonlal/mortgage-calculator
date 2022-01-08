@@ -7,24 +7,15 @@ const CALCULATE_MORTGAGE_URL = `/api/graphql`;
 interface GraphQResponse<T>  {
     getDefaultCalculation:T
 }
-export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails): string => {
-    return `{
-        "query":"mutation calculate{
-            calculateMortgage( inputData: {
-                mortgageAmount: ${mortgageInfo.mortgageAmount},
-                prepaymentAmount: ${mortgageInfo.prepaymentAmount},
-                interestRate: ${mortgageInfo.interestRate},
-                amortizationYear: ${mortgageInfo.amortizationYear},
-                amortizationMonth: ${mortgageInfo.amortizationMonth},
-                interestRateType: '${mortgageInfo.interestRateType}',
-                paymentFrequency: ${mortgageInfo.paymentFrequency},
-                term: ${mortgageInfo.term}
-            }){
-                monthlyPayment
-                id
-                creationDate
-            }
-        }","variables":{}}`
+export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
+    const query =  `{
+        getDefaultCalculation(mortgageAmount: ${mortgageInfo.mortgageAmount}  ){ 
+            monthlyPayment
+            creationDate
+            id  
+          }
+        }`;
+    return query;
 };
 
 /**
@@ -37,7 +28,16 @@ export const calculateMortgage = async ( baseUrl: string, mortgageInfo: Mortgage
 
     const graphQLMutationQuery:string =  generateMortgageGraphQL( mortgageInfo );
 
+    const data= {
+        query: graphQLMutationQuery,
+        headers: {
+            'Content-Type': 'application/json'
+            }
+    }
 
-    const mortgageResult : AxiosResponse<GraphQResponse<MortgageResult>> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, graphQLMutationQuery );
+    console.log('GraphQL', data);
+
+
+    const mortgageResult : AxiosResponse<GraphQResponse<MortgageResult>> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, data );
     return mortgageResult.data.getDefaultCalculation;
 };

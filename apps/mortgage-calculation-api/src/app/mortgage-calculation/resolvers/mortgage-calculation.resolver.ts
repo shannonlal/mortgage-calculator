@@ -10,7 +10,7 @@ export class MortgageCalculationResolver {
     private readonly logger = new Logger(MortgageCalculationResolver.name);
     constructor(private readonly mortgageCalclationService: MortgageCalculationService) {}
 
-    @Mutation(returns => CalculationResult )
+    @Query(returns => CalculationResult )
     async calculateMortgage(@Args('inputData') inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
             this.logger.log(`Calculation Mortgage ${JSON.stringify(inputData)}`);

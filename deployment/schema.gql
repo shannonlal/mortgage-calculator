@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""calculation result"""
+type CalculationResult {
+  id: ID!
+  monthlyPayment: Float!
+  creationDate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  calculateMortgage(inputData: MortgageDetailsInput!): CalculationResult!
+  getDefaultCalculation(mortgageAmount: Float!): CalculationResult!
+}
+
+input MortgageDetailsInput {
+  mortgageAmount: Float!
+  prepaymentAmount: Float!
+  interestRate: Float!
+  amortizationYear: Float!
+  amortizationMonth: Float!
+  interestRateType: String!
+  paymentFrequency: Float!
+  term: Float!
+}

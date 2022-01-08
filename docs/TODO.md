@@ -1,8 +1,7 @@
 # React App next steps
-1. ~~Update the input component to pass fixed data~~
-2. Create a GraphQL API to perform calculation
-3. Create a UI component to display the data and perform calculation
-4. Create a NGINX Container to serve the static
+1. Create a UI component to display the data and perform calculation
+2. Create a NGINX Container to serve the static
+3. Create an NX Ingress controller to deploy to cloud
 
 # Additional Steps
 1. Integrate Github actions

@@ -1,7 +1,11 @@
 # React App next steps
-1. Create a UI component to display the data and perform calculation
-2. Create a NGINX Container to serve the static
-3. Create an NX Ingress controller to deploy to cloud
+1. ~~Create a UI component to display the data~~ 
+2. Fix non-mutable issue with redux
+3. Add calculation to GraphQL server
+4. Update the React UI To call this GraphQL Server and display result
+5. Connect Dropdown data to actual pass the data over
+6. Create a NGINX Container to serve the static
+7. Create an NX Ingress controller to deploy to cloud
 
 # Additional Steps
 1. Integrate Github actions

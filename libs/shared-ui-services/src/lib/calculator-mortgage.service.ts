@@ -9,7 +9,6 @@ interface GraphQResponse<T>  {
 }
 export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
     const query =  `{
-        {
             calculateMortgage( inputData: {
               mortgageAmount: ${mortgageInfo.mortgageAmount},
               prepaymentAmount: ${mortgageInfo.prepaymentAmount},
@@ -24,7 +23,6 @@ export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
               id
               creationDate
             }
-          }
         }`;
     return query;
 };
@@ -45,9 +43,6 @@ export const calculateMortgage = async ( baseUrl: string, mortgageInfo: Mortgage
             'Content-Type': 'application/json'
             }
     }
-
-    console.log('GraphQL', data);
-
 
     const mortgageResult : AxiosResponse<GraphQResponse<MortgageResult>> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, data );
     return mortgageResult.data.getDefaultCalculation;

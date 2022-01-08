@@ -49,14 +49,10 @@ const MortgageCalculator = () => {
     });
 
     const handleChange = (eventName: string, eventValue :number|string) => {
-
-      console.log(`Event name ${eventName} Value ${eventValue}`);
      dispatchMortgageDetails( eventName, eventValue, mortgageDetails)
     };
 
     const submitCalculateMortgage = async () => {
-      //fetchMortgageCalculation(mortgageDetails);
-      console.log( 'Mortgage Calculate ', mortgageDetails);
       fetchMortgageCalculation(mortgageDetails);
     }
 

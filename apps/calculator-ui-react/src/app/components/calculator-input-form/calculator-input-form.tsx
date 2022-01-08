@@ -37,6 +37,7 @@ export interface CalculatorInputFormProps {
   term: number;
   handleChange: ( eventName: string, value:number|string ) =>void;
   initialMortgageDetails:IMortgageInitialParameters;
+  submitCalculateMortgage: () => void;
 }
 
 export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
@@ -102,7 +103,7 @@ export const CalculatorInputForm = (props: CalculatorInputFormProps) => {
         variant="contained"
         color="default"
         id="calculateMortgage"
-        onClick={() => {console.log('Clicked Page');}}
+        onClick={props.submitCalculateMortgage}
       >
         Calculate
       </Button>

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
 import { MortgageDetails, RateType } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
+import { fetchMortgageCalculation } from  '../store/mortgage-calculation/mortgage.effect';
 
 import { loadMortgageInitialParameters, IMortgageInitialParameters } from '../components/calculator-input-form/calculator-input-form.delegate';
 
@@ -18,9 +18,9 @@ const MortgageCalculator = () => {
   const dispatch = useAppDispatch();
 
   const dispatchMortgageDetails = (eventName: string, eventValue :number|string, md: MortgageDetails) => {
-    dispatch( calculateMortgage({...mortgageDetails,
+    /*dispatch( calculateMortgage({...mortgageDetails,
       [eventName]: eventValue
-     }) )
+     }) )*/
   }
 
   const termsError: string = useAppSelector ( state => state.terms.errorMessage );
@@ -54,7 +54,13 @@ const MortgageCalculator = () => {
      dispatchMortgageDetails( eventName, eventValue, mortgageDetails)
     };
 
-  const [interestDetails, setInterestDetails] = useState({
+    const submitCalculateMortgage = async () => {
+      //fetchMortgageCalculation(mortgageDetails);
+      console.log( 'Mortgage Calculate ', mortgageDetails);
+      fetchMortgageCalculation(mortgageDetails);
+    }
+
+    const [interestDetails, setInterestDetails] = useState({
     totalAmountInPeriod: 0,
     totalInterestInPeriod: 0,
     mortgageAmountPerMonth: 0,
@@ -70,7 +76,8 @@ const MortgageCalculator = () => {
   const inputPropoForm: CalculatorInputFormProps = {
     ...mortgageDetails,
     handleChange,
-    initialMortgageDetails
+    initialMortgageDetails,
+    submitCalculateMortgage
   }
 
   return (

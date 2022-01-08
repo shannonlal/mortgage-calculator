@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: calculator-api
-          image: shannonlal/calculator-api:0.0.0
+          image: shannonlal/calculator-api:0.0.1
           ports:
             - containerPort: 3333
           imagePullPolicy: IfNotPresent # Image should not be pulled

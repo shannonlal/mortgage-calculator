@@ -7,12 +7,13 @@ import { MortgageDetailsInput } from '../dto/mortgage-details.input';
 
 @Resolver(of => CalculationResult)
 export class MortgageCalculationResolver {
-    private readonly logger = new Logger(MortgageCalculationService.name);
+    private readonly logger = new Logger(MortgageCalculationResolver.name);
     constructor(private readonly mortgageCalclationService: MortgageCalculationService) {}
 
-    @Mutation(returns => CalculationResult )
+    @Query(returns => CalculationResult )
     async calculateMortgage(@Args('inputData') inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
+            this.logger.log(`Calculation Mortgage ${JSON.stringify(inputData)}`);
             const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( inputData.mortgageAmount );
 
             return calculation;
@@ -25,6 +26,7 @@ export class MortgageCalculationResolver {
     @Query(returns => CalculationResult )
     async getDefaultCalculation(@Args('mortgageAmount') mortgageAmount: number): Promise<CalculationResult> {
         try{
+            this.logger.log(`Calculating Default Mortgage ${mortgageAmount}`);
             const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( mortgageAmount );
 
             return calculation;

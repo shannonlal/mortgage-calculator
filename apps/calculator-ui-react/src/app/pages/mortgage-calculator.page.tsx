@@ -57,6 +57,7 @@ const MortgageCalculator = () => {
     const submitCalculateMortgage = async () => {
       //fetchMortgageCalculation(mortgageDetails);
       console.log( 'Mortgage Calculate ', mortgageDetails);
+      fetchMortgageCalculation(mortgageDetails);
     }
 
     const [interestDetails, setInterestDetails] = useState({

@@ -1,12 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MortgageDetails, RateType } from "@mortgage-calculator/models"; 
+import { LoadingState } from "../models";
 
-export interface MortgageDetailsState {
-    mortgageDetails: MortgageDetails
-}
-
-const initialState: MortgageDetailsState = {
-  mortgageDetails: {
+const initialState: LoadingState<MortgageDetails> = {
+  data: {
     mortgageAmount: 100000,
     prepaymentAmount: 10000,
     interestRate: 2.00,
@@ -15,18 +12,27 @@ const initialState: MortgageDetailsState = {
     interestRateType: RateType.FIXED,
     paymentFrequency: 52,
     term: 5,
-  }
+  },
+  loading: false,
+  errorMessage:''
 }
 
 const mortgageSlice = createSlice({
   initialState,
   name: "mortgage",
   reducers: {
-    calculateMortgage(state, action: PayloadAction<MortgageDetails>) {
-      state.mortgageDetails = action.payload;
+    startCalculateMortgage: ( state: LoadingState<MortgageDetails> , action: PayloadAction<void>)=>{
+        state.loading = true;
+    },
+    calculateMortgageSuccess: ( state: LoadingState<MortgageDetails> , action: PayloadAction<MortgageDetails>) => {
+        state.loading = false;
+        state.data = action.payload;
+    },
+    calculateMortgageError: (state: LoadingState<MortgageDetails>, action: PayloadAction<string>) => {
+        state.errorMessage = action.payload
     }
   },
 });
 
-export const { calculateMortgage } = mortgageSlice.actions;
+export const { startCalculateMortgage, calculateMortgageSuccess, calculateMortgageError } = mortgageSlice.actions;
 export default mortgageSlice.reducer;

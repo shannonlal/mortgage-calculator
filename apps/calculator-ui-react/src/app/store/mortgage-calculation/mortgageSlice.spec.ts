@@ -1,35 +1,55 @@
+import { MortgageDetails, RateType } from '@mortgage-calculator/models';
+import { LoadingState } from '../models';
 import { store } from '../store';
-import { calculateMortgage, MortgageDetailsState} from './mortgageSlice';
+import { startCalculateMortgage, calculateMortgageSuccess, calculateMortgageError } from './mortgageSlice';
 
 describe('calculator Mortgage Slice', () => {
 
     it('should verify calculateMortgage is defined', () => {
-        expect( calculateMortgage ).toBeDefined();
+        expect( startCalculateMortgage ).toBeDefined();
     });
 
     it('should get initial Mortgage Details State ', () =>{
-        const initialState: MortgageDetailsState = store.getState().mortgage;
-
+        const initialState: LoadingState<MortgageDetails> = store.getState().mortgage;
         expect( initialState ).toBeDefined();
-        expect( initialState.mortgageDetails ).toBeDefined();
-
-        expect( initialState.mortgageDetails.term ).toBe(5);
-        expect( initialState.mortgageDetails.interestRate).toBe(2.00);
-        expect( initialState.mortgageDetails.amortizationMonth).toBe(2);
-
     });
 
-    it( 'should generate mortgage calculation', () => {
-        const state: MortgageDetailsState = store.getState().mortgage;
+    it('should get initial Mortgage Details State ', () =>{
+        const initialState: LoadingState<MortgageDetails> = store.getState().mortgage;
 
-        store.dispatch( calculateMortgage({...state.mortgageDetails,
-            term:6, interestRate:3.00
-        } ));
+        expect( initialState ).toBeDefined();
+        expect( initialState.data ).toBeDefined();
 
-        const updatedState = store.getState().mortgage.mortgageDetails;
+        expect( initialState.data.interestRate ).toBe(2.00);
+    });
+
+    it( 'should load calculate mortgage start', () => {
+        const initialState: LoadingState<MortgageDetails> = store.getState().mortgage;
+        expect( initialState.loading).toBe( false );
+        store.dispatch( startCalculateMortgage() );
+
+        const updatedState: LoadingState<MortgageDetails> = store.getState().mortgage;
 
         expect( updatedState ).toBeDefined();
-        expect( updatedState.term).toBe(6);
-        expect( updatedState.interestRate).toBe(3.00);
-    })
+        expect( updatedState.loading).toBe(true);
+    });
+
+    it( 'should load calculate mortgage success', () => {
+        const mortgageDetails:MortgageDetails = {
+            mortgageAmount: 100000,
+            prepaymentAmount: 10000,
+            interestRate: 2.00,
+            amortizationYear: 5,
+            amortizationMonth: 2,
+            interestRateType: RateType.FIXED,
+            paymentFrequency: 52,
+            term: 5,
+        };
+
+        store.dispatch( calculateMortgageSuccess( mortgageDetails ) );
+
+        const updatedState: LoadingState<MortgageDetails> = store.getState().mortgage;
+
+        expect( updatedState ).toBeDefined();
+    });
 });

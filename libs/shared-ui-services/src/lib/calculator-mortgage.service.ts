@@ -9,10 +9,21 @@ interface GraphQResponse<T>  {
 }
 export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
     const query =  `{
-        getDefaultCalculation(mortgageAmount: ${mortgageInfo.mortgageAmount}  ){ 
-            monthlyPayment
-            creationDate
-            id  
+        {
+            calculateMortgage( inputData: {
+              mortgageAmount: ${mortgageInfo.mortgageAmount},
+              prepaymentAmount: ${mortgageInfo.prepaymentAmount},
+              interestRate: ${mortgageInfo.interestRate},
+              amortizationYear: ${mortgageInfo.amortizationYear},
+              amortizationMonth:${mortgageInfo.amortizationMonth},
+              interestRateType: "FIXED",
+              paymentFrequency:${mortgageInfo.paymentFrequency},
+              term: ${mortgageInfo.term}
+            }){
+              monthlyPayment
+              id
+              creationDate
+            }
           }
         }`;
     return query;

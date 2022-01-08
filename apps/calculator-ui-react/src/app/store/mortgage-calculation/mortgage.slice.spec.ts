@@ -1,4 +1,4 @@
-import { MortgageDetails, RateType } from '@mortgage-calculator/models';
+import { MortgageResult } from '@mortgage-calculator/models';
 import { LoadingState } from '../models';
 import { store } from '../store';
 import { startCalculateMortgage, calculateMortgageSuccess } from './mortgage.slice';
@@ -9,46 +9,41 @@ describe('calculator Mortgage Slice', () => {
         expect( startCalculateMortgage ).toBeDefined();
     });
 
-    it('should get initial Mortgage Details State ', () =>{
-        const initialState: LoadingState<MortgageDetails> = store.getState().mortgage;
+    it('should get initial Mortgage Result State ', () =>{
+        const initialState: LoadingState<MortgageResult> = store.getState().mortgage;
         expect( initialState ).toBeDefined();
     });
 
-    it('should get initial Mortgage Details State ', () =>{
-        const initialState: LoadingState<MortgageDetails> = store.getState().mortgage;
+    it('should get initial Mortgage Result State ', () =>{
+        const initialState: LoadingState<MortgageResult> = store.getState().mortgage;
 
         expect( initialState ).toBeDefined();
         expect( initialState.data ).toBeDefined();
 
-        expect( initialState.data.interestRate ).toBe(2.00);
+        expect( initialState.data.monthlyPayment ).toBe(1213.12);
     });
 
     it( 'should load calculate mortgage start', () => {
-        const initialState: LoadingState<MortgageDetails> = store.getState().mortgage;
+        const initialState: LoadingState<MortgageResult> = store.getState().mortgage;
         expect( initialState.loading).toBe( false );
         store.dispatch( startCalculateMortgage() );
 
-        const updatedState: LoadingState<MortgageDetails> = store.getState().mortgage;
+        const updatedState: LoadingState<MortgageResult> = store.getState().mortgage;
 
         expect( updatedState ).toBeDefined();
         expect( updatedState.loading).toBe(true);
     });
 
     it( 'should load calculate mortgage success', () => {
-        const mortgageDetails:MortgageDetails = {
-            mortgageAmount: 100000,
-            prepaymentAmount: 10000,
-            interestRate: 2.00,
-            amortizationYear: 5,
-            amortizationMonth: 2,
-            interestRateType: RateType.FIXED,
-            paymentFrequency: 52,
-            term: 5,
+        const mortgageResult:MortgageResult = {
+            id: `1231313123123`,
+            monthlyPayment: 1213.12,
+            creationDate: new Date()
         };
 
-        store.dispatch( calculateMortgageSuccess( mortgageDetails ) );
+        store.dispatch( calculateMortgageSuccess( mortgageResult ) );
 
-        const updatedState: LoadingState<MortgageDetails> = store.getState().mortgage;
+        const updatedState: LoadingState<MortgageResult> = store.getState().mortgage;
 
         expect( updatedState ).toBeDefined();
     });

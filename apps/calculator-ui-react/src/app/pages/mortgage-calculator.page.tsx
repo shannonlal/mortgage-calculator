@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import {CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form'
 import { MortgageDetails, RateType } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { calculateMortgage } from  '../store/mortgage-calculation/mortgageSlice';
+//import { calculateMortgage } from  '../store/mortgage-calculation/mortgage.slice';
 
 import { loadMortgageInitialParameters, IMortgageInitialParameters } from '../components/calculator-input-form/calculator-input-form.delegate';
 
@@ -18,9 +18,9 @@ const MortgageCalculator = () => {
   const dispatch = useAppDispatch();
 
   const dispatchMortgageDetails = (eventName: string, eventValue :number|string, md: MortgageDetails) => {
-    dispatch( calculateMortgage({...mortgageDetails,
+    /*dispatch( calculateMortgage({...mortgageDetails,
       [eventName]: eventValue
-     }) )
+     }) )*/
   }
 
   const termsError: string = useAppSelector ( state => state.terms.errorMessage );

@@ -1,7 +1,7 @@
 import { MortgageDetails, RateType } from '@mortgage-calculator/models';
 import { LoadingState } from '../models';
 import { store } from '../store';
-import { startCalculateMortgage, calculateMortgageSuccess, calculateMortgageError } from './mortgageSlice';
+import { startCalculateMortgage, calculateMortgageSuccess } from './mortgage.slice';
 
 describe('calculator Mortgage Slice', () => {
 

@@ -38,7 +38,7 @@ describe('calculator Mortgage Slice', () => {
         const mortgageResult:MortgageResult = {
             id: `1231313123123`,
             monthlyPayment: 1213.12,
-            creationDate: new Date()
+            creationDate: new Date().toISOString()
         };
 
         store.dispatch( calculateMortgageSuccess( mortgageResult ) );

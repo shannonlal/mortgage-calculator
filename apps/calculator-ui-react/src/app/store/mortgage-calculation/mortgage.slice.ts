@@ -6,7 +6,7 @@ const initialState: LoadingState<MortgageResult> = {
   data: {
     id: `1231313123123`,
     monthlyPayment: 1213.12,
-    creationDate: new Date()
+    creationDate: new Date().toISOString()
   },
   loading: false,
   errorMessage:''

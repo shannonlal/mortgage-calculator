@@ -29,6 +29,6 @@ jobs:
     - run: npm ci
     - run: npm run postinstall
     - run: npm install -g nx
-    - run: npm lint:all
-    - run: npm test:all
+    - run: npm run lint:all
+    - run: npm run test:all
 

@@ -19,7 +19,7 @@ export class MortgageCalculationService {
             const calculation: CalculationResult = {
                 id: `1231233213`,
                 monthlyPayment: 1212.31,
-                creationDate: new Date()
+                creationDate: new Date().toISOString()
             }
             return Promise.resolve( calculation );
         }catch( err ){
@@ -42,7 +42,7 @@ export class MortgageCalculationService {
             const calculation: CalculationResult = {
                 id: `1231233213`,
                 monthlyPayment: 1212.31,
-                creationDate: new Date()
+                creationDate: new Date().toISOString()
             }
             return Promise.resolve( calculation );
         }catch( err ){

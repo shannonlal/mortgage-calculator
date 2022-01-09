@@ -9,6 +9,6 @@ export class CalculationResult {
   monthlyPayment: number;
 
   @Field()
-  creationDate: Date;
+  creationDate: string;
 
 }

@@ -52,11 +52,19 @@ export const getMortgageAmountYear = (mortgageAmount: number, prepaymentAmount: 
     const rst = ((mortgageAmount - prepaymentAmount) * 100) /
                 (amortizationPeriodYear * 100 + interestRate * (amortizationPeriodYear * ((amortizationPeriodYear - 1) / 2)));
 
-    return Math.round((rst + Number.EPSILON) * 100) / 100
+    return Math.round((rst + Number.EPSILON) * 100) / 100;
 }
 
+/**
+ * 
+ * @param mortgageAmountPerYear 
+ * @param term 
+ * @returns 
+ */
 export const getTermPrincipleAmount = (mortgageAmountPerYear: number, term: number) :number => {
-    return (mortgageAmountPerYear * term);
+    const termPrincipalAmount = (mortgageAmountPerYear * term);
+
+    return Math.round((termPrincipalAmount + Number.EPSILON) * 100) / 100;
 };
 
 /**

@@ -1,6 +1,12 @@
 
 
-import { getMortgageAmountYear, getPeriodInsterestPerYear, getPeriodInterestPerMonth, getTotalAmountPerPeriod, getTotalPeriodInterest } from './mortgage-calculation.delegate';
+import { 
+    getMortgageAmountYear, 
+    getPeriodInsterestPerYear, 
+    getPeriodInterestPerMonth, 
+    getTermPrincipleAmount, 
+    getTotalAmountPerPeriod, 
+    getTotalPeriodInterest } from './mortgage-calculation.delegate';
 
 describe('Mortgage Calculation Delegate', () => {
 
@@ -92,6 +98,20 @@ describe('Mortgage Calculation Delegate', () => {
         const totalAmountPerPeriod = getMortgageAmountYear( mortgageAmount, prepaymentAmount, amortizationPeriodYear, interestRate);
 
         expect( totalAmountPerPeriod ).toBe( 53012.05 );
+    });
+  });
+
+  describe('getTermPrincipleAmount', () => {
+    it('get Term Principal Amount  exist', async() => {
+      expect(getTermPrincipleAmount).toBeDefined();
+    });
+
+    it('getTermPrincipleAmount', async() => {
+        const mortgagePerYear = 53012.05;
+        const term = 10;
+        const totalAmountPerPeriod = getTermPrincipleAmount( mortgagePerYear, term );
+
+        expect( totalAmountPerPeriod ).toBe( 530120.5 );
     });
   });
 });

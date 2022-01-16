@@ -29,6 +29,8 @@ jobs:
     - run: npm ci
     - run: npm run postinstall
     - run: npm install -g nx
+    - run: npm install codecov -g
     - run: npm run lint:all
     - run: npm run test:all
+    - npm: codecov
 

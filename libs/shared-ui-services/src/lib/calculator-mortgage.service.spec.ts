@@ -50,7 +50,12 @@ describe('getTerms', () => {
             "getDefaultCalculation": {
                 "id":12319234243234234,
                 "monthlyPayment": 1212.31,
-                "creationDate": "2022-01-07T03:09:48.681Z"
+                "creationDate": "2022-01-07T03:09:48.681Z",
+                "mortgageAmountPerMonth": 1212.31,
+                "termPrincipleAmount": 10000,
+                "termInterestAmount": 3000,
+                "totalInterestInPeriod": 400,
+                "totalAmountInPeriod": 3000
             }
         }
     };

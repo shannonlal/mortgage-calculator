@@ -22,6 +22,11 @@ export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
               monthlyPayment
               id
               creationDate
+              mortgageAmountPerMonth
+              termPrincipleAmount
+              termInterestAmount
+              totalInterestInPeriod
+              totalAmountInPeriod
             }
         }`;
     return query;

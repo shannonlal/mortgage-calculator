@@ -5,8 +5,13 @@ import { LoadingState } from "../models";
 const initialState: LoadingState<MortgageResult> = {
   data: {
     id: `1231313123123`,
-    monthlyPayment: 1213.12,
-    creationDate: new Date().toISOString()
+    monthlyPayment: 0,
+    creationDate: new Date().toISOString(),
+    mortgageAmountPerMonth: 0,
+    termPrincipleAmount: 0,
+    termInterestAmount: 3000,
+    totalInterestInPeriod: 400,
+    totalAmountInPeriod: 3000
   },
   loading: false,
   errorMessage:''

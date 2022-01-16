@@ -47,7 +47,8 @@ describe('getTerms', () => {
 
     const t =  {
         "data": {
-            "getDefaultCalculation": {
+          "data":{
+            "calculateMortgage": {
                 "id":12319234243234234,
                 "monthlyPayment": 1212.31,
                 "creationDate": "2022-01-07T03:09:48.681Z",
@@ -57,6 +58,7 @@ describe('getTerms', () => {
                 "totalInterestInPeriod": 400,
                 "totalAmountInPeriod": 3000
             }
+          }
         }
     };
 

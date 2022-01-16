@@ -20,7 +20,7 @@ describe('calculator Mortgage Slice', () => {
         expect( initialState ).toBeDefined();
         expect( initialState.data ).toBeDefined();
 
-        expect( initialState.data.monthlyPayment ).toBe(1213.12);
+        expect( initialState.data.monthlyPayment ).toBe(0);
     });
 
     it( 'should load calculate mortgage start', () => {

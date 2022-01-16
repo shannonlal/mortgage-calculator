@@ -14,7 +14,7 @@ export class MortgageCalculationService {
      */
     async calculateMortgae(inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
-            this.logger.log(`Calculating the mortgage amount ${inputData}`);
+            this.logger.log(`Calculating the mortgage amount ${JSON.stringify(inputData)}`);
 
             const calculation: CalculationResult = {
                 id: `1231233213`,

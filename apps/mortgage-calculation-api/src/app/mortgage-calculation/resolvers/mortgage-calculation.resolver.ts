@@ -14,8 +14,9 @@ export class MortgageCalculationResolver {
     async calculateMortgage(@Args('inputData') inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
             this.logger.log(`Calculation Mortgage ${JSON.stringify(inputData)}`);
-            const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( inputData.mortgageAmount );
+            const calculation: CalculationResult = await this.mortgageCalclationService.calculateMortgae( inputData );
 
+            this.logger.log('Calculated the result', calculation);
             return calculation;
         }catch (err) {
             this.logger.error(`unexpected error calculating the mortgage calculation`);

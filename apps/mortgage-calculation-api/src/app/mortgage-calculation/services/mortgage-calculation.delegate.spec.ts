@@ -1,6 +1,6 @@
 
 
-import { getPeriodInsterestPerYear, getPeriodInterestPerMonth, getTotalPeriodInterest } from './mortgage-calculation.delegate';
+import { getMortgageAmountYear, getPeriodInsterestPerYear, getPeriodInterestPerMonth, getTotalAmountPerPeriod, getTotalPeriodInterest } from './mortgage-calculation.delegate';
 
 describe('Mortgage Calculation Delegate', () => {
 
@@ -59,6 +59,39 @@ describe('Mortgage Calculation Delegate', () => {
         const periodInsterestPerMonth = getPeriodInterestPerMonth( periodInsterestPerYear, amortizationPeriodYear);
 
         expect( periodInsterestPerMonth ).toBe( 4125 );
+    });
+  });
+
+  describe('getTotalAmountPerPeriod', () => {
+    it('get Total Amount Per Period should exist', async() => {
+      expect(getTotalAmountPerPeriod).toBeDefined();
+    });
+
+    it('getTotalAmountPerPeriod', async() => {
+        const totalPeriodInterest = 519750;
+        const mortgageAmount = 1000000;
+        const prepaymentAmount = 10000;
+        
+        const totalAmountPerPeriod = getTotalAmountPerPeriod( totalPeriodInterest, mortgageAmount, prepaymentAmount);
+
+        expect( totalAmountPerPeriod ).toBe( 1509750 );
+    });
+  });
+
+  describe('getMortgageAmountYear', () => {
+    it('get Mortgage Amount Year should exist', async() => {
+      expect(getMortgageAmountYear).toBeDefined();
+    });
+
+    it('getMortgageAmountYear', async() => {
+        const mortgageAmount = 1000000;
+        const prepaymentAmount = 10000;
+        const interestRate = 3.5;
+        const amortizationPeriodYear = 15;
+        
+        const totalAmountPerPeriod = getMortgageAmountYear( mortgageAmount, prepaymentAmount, amortizationPeriodYear, interestRate);
+
+        expect( totalAmountPerPeriod ).toBe( 53012.05 );
     });
   });
 });

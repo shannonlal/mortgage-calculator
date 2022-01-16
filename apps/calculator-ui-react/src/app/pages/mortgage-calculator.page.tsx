@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { CalculatorInputForm, CalculatorInputFormProps } from '../components/calculator-input-form/calculator-input-form';
 import { CalculationSummary, CalculationSummaryProps } from '../components/calculation-summary/calculation-summary';
-import { MortgageDetails, RateType } from "@mortgage-calculator/models";
+import { MortgageDetails, MortgageResult, RateType } from "@mortgage-calculator/models";
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchMortgageCalculation } from  '../store/mortgage-calculation/mortgage.effect';
 
@@ -24,13 +24,6 @@ const MortgageCalculator = () => {
      }) )*/
   }
 
-  const termsError: string = useAppSelector ( state => state.terms.errorMessage );
-  const rateTypes: Array<string> = useAppSelector( state => state.rateType.data);
-  const rateTypesError: string = useAppSelector( state => state.rateType.errorMessage);
-  const amortizationError: string  = useAppSelector( state => state.amortization.errorMessage );
-  const paymentFrequencyError: string = useAppSelector( state => state.paymentFrequency.errorMessage );
-  const interestRateError: string = useAppSelector( state => state.interestRate.errorMessage );
-
   const initialMortgageDetails: IMortgageInitialParameters = {
     terms: useAppSelector( state => state.terms.data ),
     interestRate: useAppSelector( state => state.interestRate.data ),
@@ -50,6 +43,8 @@ const MortgageCalculator = () => {
     });
 
     const [displaySummaryTable, setDisplaySummaryTable] = useState<boolean>(false);
+
+    const mortgageResult: MortgageResult = useAppSelector( state => state.mortgage.data);
 
     const handleChange = (eventName: string, eventValue :number|string) => {
      dispatchMortgageDetails( eventName, eventValue, mortgageDetails)
@@ -78,13 +73,13 @@ const MortgageCalculator = () => {
       const summaryTableProps: CalculationSummaryProps = {
         term: mortgageDetails.term,
         amortizationPeriodYear: mortgageDetails.amortizationYear,
-        mortgageAmountPerMonth: 0,
+        mortgageAmountPerMonth: mortgageResult.mortgageAmountPerMonth,
         prepaymentAmount: mortgageDetails.prepaymentAmount,
-        termPrincipleAmount: 0,
+        termPrincipleAmount: mortgageResult.termPrincipleAmount,
         mortgageAmount: mortgageDetails.mortgageAmount,
-        termInterestAmount: 0,
-        totalInterestInPeriod: 0,
-        totalAmountInPeriod: 0
+        termInterestAmount: mortgageResult.termInterestAmount,
+        totalInterestInPeriod: mortgageResult.totalInterestInPeriod,
+        totalAmountInPeriod: mortgageResult.totalAmountInPeriod
       };
       return <CalculationSummary {...summaryTableProps} />
     }

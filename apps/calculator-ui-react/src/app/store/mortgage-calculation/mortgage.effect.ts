@@ -14,7 +14,12 @@ export const fetchMortgageCalculation = async ( mortgageDetails: MortgageDetails
 
         const mortgageResult: MortgageResult = await calculateMortgage( baseUrl,mortgageDetails );
 
-        store.dispatch( calculateMortgageSuccess( mortgageResult ));
+        if (mortgageResult === undefined){
+            store.dispatch( calculateMortgageError( `Unexpected error loading terms` ));
+        } else {
+            store.dispatch( calculateMortgageSuccess( mortgageResult ));
+        }
+
     }catch(err){
         store.dispatch( calculateMortgageError( `Unexpected error loading terms` ));
     }

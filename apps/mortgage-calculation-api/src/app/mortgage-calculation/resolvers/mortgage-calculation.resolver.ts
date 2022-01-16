@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { Args, Mutation, Resolver, Query} from '@nestjs/graphql';
+import { Args, Resolver, Query} from '@nestjs/graphql';
 import { CalculationResult } from '../dto/calculation-result.output';
 import { MortgageCalculationService } from '../services/mortgage-calculation.service';
 import { MortgageDetailsInput } from '../dto/mortgage-details.input';
@@ -14,8 +14,9 @@ export class MortgageCalculationResolver {
     async calculateMortgage(@Args('inputData') inputData: MortgageDetailsInput): Promise<CalculationResult> {
         try{
             this.logger.log(`Calculation Mortgage ${JSON.stringify(inputData)}`);
-            const calculation: CalculationResult = await this.mortgageCalclationService.calculateDefaultMortgae( inputData.mortgageAmount );
+            const calculation: CalculationResult = await this.mortgageCalclationService.calculateMortgae( inputData );
 
+            this.logger.log('Calculated the result', calculation);
             return calculation;
         }catch (err) {
             this.logger.error(`unexpected error calculating the mortgage calculation`);

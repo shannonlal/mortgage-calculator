@@ -5,7 +5,10 @@ import axios, {AxiosResponse} from "axios";
 const CALCULATE_MORTGAGE_URL = `/api/graphql`;
 
 interface GraphQResponse<T>  {
-    getDefaultCalculation:T
+    data: {
+        calculateMortgage:T
+    }
+
 }
 export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
     const query =  `{
@@ -22,6 +25,11 @@ export const generateMortgageGraphQL = (mortgageInfo: MortgageDetails)  => {
               monthlyPayment
               id
               creationDate
+              mortgageAmountPerMonth
+              termPrincipleAmount
+              termInterestAmount
+              totalInterestInPeriod
+              totalAmountInPeriod
             }
         }`;
     return query;
@@ -42,8 +50,9 @@ export const calculateMortgage = async ( baseUrl: string, mortgageInfo: Mortgage
         headers: {
             'Content-Type': 'application/json'
             }
-    }
+    };
 
-    const mortgageResult : AxiosResponse<GraphQResponse<MortgageResult>> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, data );
-    return mortgageResult.data.getDefaultCalculation;
+    const mortgageResponse : AxiosResponse<GraphQResponse<MortgageResult>> = await axios.post( `${baseUrl}${CALCULATE_MORTGAGE_URL}`, data );
+    const mortgageResult = mortgageResponse.data.data.calculateMortgage;
+    return mortgageResult;
 };

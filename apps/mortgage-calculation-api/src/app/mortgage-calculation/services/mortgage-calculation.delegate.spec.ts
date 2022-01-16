@@ -1,9 +1,11 @@
 
 
 import { 
+    getMortgageAmountPerMonth,
     getMortgageAmountYear, 
     getPeriodInsterestPerYear, 
     getPeriodInterestPerMonth, 
+    getTermInterestAmount, 
     getTermPrincipleAmount, 
     getTotalAmountPerPeriod, 
     getTotalPeriodInterest } from './mortgage-calculation.delegate';
@@ -112,6 +114,34 @@ describe('Mortgage Calculation Delegate', () => {
         const totalAmountPerPeriod = getTermPrincipleAmount( mortgagePerYear, term );
 
         expect( totalAmountPerPeriod ).toBe( 530120.5 );
+    });
+  });
+
+  describe('getTermInterestAmount', () => {
+    it('get Term Interest Amount exist', async() => {
+      expect(getTermInterestAmount).toBeDefined();
+    });
+
+    it('getTermInterestAmount', async() => {
+        const periodInterestPerYear = 34650;
+        const term = 10;
+        const totalAmountPerPeriod = getTermInterestAmount( periodInterestPerYear, term );
+
+        expect( totalAmountPerPeriod ).toBe( 346500 );
+    });
+  });
+
+  describe('getMortgageAmountPerMonth', () => {
+    it('get Mortgage Amount Per Month', async() => {
+      expect(getMortgageAmountPerMonth).toBeDefined();
+    });
+
+    it('getMortgageAmountPerMonth', async() => {
+        const mortgageAmountPerYear = 53012.05;
+        const paymentFrequency = 12;
+        const mortgageAmountPerMonth = getMortgageAmountPerMonth( mortgageAmountPerYear, paymentFrequency );
+
+        expect( mortgageAmountPerMonth ).toBe( 4417.67 );
     });
   });
 });

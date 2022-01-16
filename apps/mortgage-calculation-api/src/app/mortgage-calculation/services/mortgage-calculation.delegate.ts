@@ -74,11 +74,19 @@ export const getTermPrincipleAmount = (mortgageAmountPerYear: number, term: numb
  * @returns 
  */
 export const getTermInterestAmount = (periodInsterestPerYear: number, term: number): number => {
-    return (periodInsterestPerYear * term );
+    const termInterestAmount = (periodInsterestPerYear * term );
+    return Math.round((termInterestAmount + Number.EPSILON) * 100) / 100;
 };
 
+/**
+ * 
+ * @param mortgageAmountPerYear 
+ * @param paymentFrequency 
+ * @returns 
+ */
 export const getMortgageAmountPerMonth = (mortgageAmountPerYear: number, paymentFrequency: number ): number => {
-    return ( mortgageAmountPerYear/paymentFrequency );
+    const mortgageAmountPerMonth =  mortgageAmountPerYear/paymentFrequency ;
+    return Math.round((mortgageAmountPerMonth + Number.EPSILON) * 100) / 100;
 }
 
 export const getPeriodInstallmentAmount = (mortgageAmountPerMonth: number, periodInsterestPerMonth:number ) => {

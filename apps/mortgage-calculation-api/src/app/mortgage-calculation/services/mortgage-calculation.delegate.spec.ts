@@ -3,6 +3,7 @@
 import { 
     getMortgageAmountPerMonth,
     getMortgageAmountYear, 
+    getPeriodInstallmentAmount, 
     getPeriodInsterestPerYear, 
     getPeriodInterestPerMonth, 
     getTermInterestAmount, 
@@ -142,6 +143,20 @@ describe('Mortgage Calculation Delegate', () => {
         const mortgageAmountPerMonth = getMortgageAmountPerMonth( mortgageAmountPerYear, paymentFrequency );
 
         expect( mortgageAmountPerMonth ).toBe( 4417.67 );
+    });
+  });
+
+  describe('getPeriodInstallmentAmount', () => {
+    it('get Period Installment Amount', async() => {
+      expect(getPeriodInstallmentAmount).toBeDefined();
+    });
+
+    it('getPeriodInstallmentAmount', async() => {
+        const mortgageAmountPerMonth = 4417.67;
+        const periodInterestPerMonth = 2887.5;
+        const periodInstallmentAmount = getPeriodInstallmentAmount( mortgageAmountPerMonth, periodInterestPerMonth );
+
+        expect( periodInstallmentAmount ).toBe( 7305.17 );
     });
   });
 });

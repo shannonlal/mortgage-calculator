@@ -85,10 +85,17 @@ export const getTermInterestAmount = (periodInsterestPerYear: number, term: numb
  * @returns 
  */
 export const getMortgageAmountPerMonth = (mortgageAmountPerYear: number, paymentFrequency: number ): number => {
-    const mortgageAmountPerMonth =  mortgageAmountPerYear/paymentFrequency ;
+    const mortgageAmountPerMonth =  mortgageAmountPerYear/paymentFrequency;
     return Math.round((mortgageAmountPerMonth + Number.EPSILON) * 100) / 100;
 }
 
+/**
+ * 
+ * @param mortgageAmountPerMonth 
+ * @param periodInsterestPerMonth 
+ * @returns 
+ */
 export const getPeriodInstallmentAmount = (mortgageAmountPerMonth: number, periodInsterestPerMonth:number ) => {
-    return (mortgageAmountPerMonth + periodInsterestPerMonth);
+    const periodInstallmentAmount = (mortgageAmountPerMonth + periodInsterestPerMonth);
+    return Math.round((periodInstallmentAmount + Number.EPSILON) * 100) / 100;
 }

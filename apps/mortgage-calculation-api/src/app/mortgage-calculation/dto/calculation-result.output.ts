@@ -11,4 +11,19 @@ export class CalculationResult {
   @Field()
   creationDate: string;
 
+  @Field()
+  mortgageAmountPerMonth: number;
+
+  @Field()
+  termPrincipleAmount: number;
+
+  @Field()
+  termInterestAmount: number;
+
+  @Field()
+  totalInterestInPeriod: number;
+
+  @Field()
+  totalAmountInPeriod: number;
+
 }

@@ -19,9 +19,22 @@ const MortgageCalculator = () => {
   const dispatch = useAppDispatch();
 
   const dispatchMortgageDetails = (eventName: string, eventValue :number|string, md: MortgageDetails) => {
-    /*dispatch( calculateMortgage({...mortgageDetails,
-      [eventName]: eventValue
-     }) )*/
+
+     if( eventName === 'mortgageamount'){ 
+      setMortgageDetails( {...mortgageDetails,  mortgageAmount: Number(eventValue) });
+     } else if( eventName === 'prepaymentAmount'){ 
+      setMortgageDetails( {...mortgageDetails,  prepaymentAmount: Number(eventValue) });
+     } else if( eventName === 'interestRate'){ 
+      setMortgageDetails( {...mortgageDetails,  interestRate: Number(eventValue) });
+     } else if( eventName === 'paymentFrequency'){ 
+      setMortgageDetails( {...mortgageDetails,  paymentFrequency: Number(eventValue) });
+     } else if( eventName === 'term'){ 
+      setMortgageDetails( {...mortgageDetails,  term: Number(eventValue) });
+     } else if( eventName === 'amortizationYear'){ 
+      setMortgageDetails( {...mortgageDetails,  amortizationYear: Number(eventValue) });
+     } else { 
+      setMortgageDetails( {...mortgageDetails,  amortizationMonth: Number(eventValue) });
+     } 
   }
 
   const initialMortgageDetails: IMortgageInitialParameters = {
@@ -55,13 +68,13 @@ const MortgageCalculator = () => {
       setDisplaySummaryTable( true );
     }
 
-    const [interestDetails, setInterestDetails] = useState({
+    /*const [interestDetails, setInterestDetails] = useState({
       totalAmountInPeriod: 0,
       totalInterestInPeriod: 0,
       mortgageAmountPerMonth: 0,
       termInterestAmount: 0,
       termPrincipleAmount: 0
-    });
+    });*/
 
   // calculate mortgage on initial render
   useEffect(() => {

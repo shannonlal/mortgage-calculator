@@ -3,8 +3,6 @@
   "projects": {
     "calculator-api": "apps/calculator-api",
     "calculator-service": "libs/calculator-service",
-    "calculator-ui": "apps/calculator-ui",
-    "calculator-ui-e2e": "apps/calculator-ui-e2e",
     "calculator-ui-react": "apps/calculator-ui-react",
     "calculator-ui-react-e2e": "apps/calculator-ui-react-e2e",
     "models": "libs/models",

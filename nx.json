@@ -59,6 +59,5 @@
         "linter": "eslint"
       }
     }
-  },
-  "defaultProject": "calculator-ui"
+  }
 }

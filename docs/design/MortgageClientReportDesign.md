@@ -52,8 +52,65 @@ If we follow the 80 - 20 rule (that 80 of requests will come from 20% of traffic
 Every day we will get : 20 reads/sec * 3600 * 24 * 2000 = 3.5 GB of cache
 
 
+# API Design
+
+## Create Mortgage Summary
+
+URL: /mortgage-summary
+Description: Creates a new short link to the mortgage
+METHOD: POST
+BODY: {
+    "monthlyPayment": 1212.31,
+    "id": "1231233213",
+    "creationDate": "2022-01-16T17:44:37.784Z",
+    "mortgageAmountPerMonth": 1212.31,
+    "termPrincipleAmount": 10000,
+    "termInterestAmount": 3000,
+    "totalInterestInPeriod": 400,
+    "totalAmountInPeriod": 3000,
+    "brokerName":"J Smith",
+    "clientName":"Bob Rose"
+}
+
+Response : {
+    URL: https://www.mortgage.io/#$Adbed##1
+}
 
 
+URL: /mortgage-summary/{id}
+Description: Updates the short link information
+METHOD: PUT
+BODY: {
+    "monthlyPayment": 1212.31,
+    "creationDate": "2022-01-16T17:44:37.784Z",
+    "mortgageAmountPerMonth": 1212.31,
+    "termPrincipleAmount": 10000,
+    "termInterestAmount": 3000,
+    "totalInterestInPeriod": 400,
+    "totalAmountInPeriod": 3000,
+    "brokerName":"J Smith",
+    "clientName":"Bob Rose"
+}
 
+URL: /mortgage-summary/{id}
+Description: Deletes the short link
+METHOD: DELETE
+BODY: {
+}
 
+URL: /mortgage-summary/{id}
+Description: Deletes the short link
+METHOD: GET
+Response: {
+    "monthlyPayment": 1212.31,
+    "id": "1231233213",
+    "creationDate": "2022-01-16T17:44:37.784Z",
+    "mortgageAmountPerMonth": 1212.31,
+    "termPrincipleAmount": 10000,
+    "termInterestAmount": 3000,
+    "totalInterestInPeriod": 400,
+    "totalAmountInPeriod": 3000,
+    "brokerName":"J Smith",
+    "clientName":"Bob Rose"
+}
 

@@ -114,3 +114,35 @@ Response: {
     "clientName":"Bob Rose"
 }
 
+# Database Design
+
+## Key metrics
+2 Billion records
+read heavy
+
+
+## Database Schema
+URL HASH
+- originalUrl: string
+- creationDate: date
+- expirationDate: date
+- user Id
+
+User 
+- name
+- userName
+- email
+- creationDate
+
+## Hashing Algorithm
+To determine the hashing algorithm we need to determine how many records we need to store.  2 Billion Records over a 3 year period
+
+Encoding options:
+Base32 - [a-z][A-Z]
+Base62 - [a-z][A-Z][0-9]
+
+How short a key do we want? 6, 8, 10
+
+If we did Base32 - with 8
+32^8 - 1 Trillion options.  Which should be enough
+

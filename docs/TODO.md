@@ -2,9 +2,17 @@
 1. ~~Create a UI component to display the data~~ 
 2. ~~Fix non-mutable issue with redux~~
 3. ~~Enable Github Actions to repo~~
-4. Add calculation to GraphQL server
-5. Update the React UI To call this GraphQL Server and display result
-6. Connect Dropdown data to actual pass the data over
+4. ~~Add calculation to GraphQL server~~
+5. ~~Update the React UI To call this GraphQL Server and display result~~
+6. ~~Connect Dropdown data to actual pass the data over~~
+
+# Mortgage Summary Service
+1. Need to create a new NestJS Service to support serving.
+2. Need an in memory mongodb service to support
+3. Need to create a shared MongoDB instance
+4. Deploy a docker-compose service with shared (router, config and shards)
+5. Deploy a redudant Redis service for caching
+
 7. Create a NGINX Container to serve the static
 8. Create an NX Ingress controller to deploy to cloud
 

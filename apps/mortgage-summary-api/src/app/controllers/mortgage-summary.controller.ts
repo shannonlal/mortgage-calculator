@@ -1,5 +1,5 @@
 import { MortgageResult } from '@mortgage-calculator/models';
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 import { MortgageSummaryService } from '../services/mortgage-summary.service';
 
@@ -7,8 +7,8 @@ import { MortgageSummaryService } from '../services/mortgage-summary.service';
 export class MortgageSummaryController {
   constructor(private readonly appService: MortgageSummaryService) {}
 
-  @Get()
-  async getMortgageSummary( hashKey: string): Promise<MortgageResult> {
+  @Get(':id')
+  async getMortgageSummary( @Param('id') hashKey:string): Promise<MortgageResult> {
     return this.appService.getMortgageSummary( hashKey );
   }
 }

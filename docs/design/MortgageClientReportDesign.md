@@ -146,3 +146,4 @@ How short a key do we want? 6, 8, 10
 If we did Base32 - with 8
 32^8 - 1 Trillion options.  Which should be enough
 
+

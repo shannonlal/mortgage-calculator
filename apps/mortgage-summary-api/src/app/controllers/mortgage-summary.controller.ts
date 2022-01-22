@@ -1,13 +1,14 @@
+import { MortgageResult } from '@mortgage-calculator/models';
 import { Controller, Get } from '@nestjs/common';
 
 import { MortgageSummaryService } from '../services/mortgage-summary.service';
 
-@Controller()
+@Controller('mortgage-summary')
 export class MortgageSummaryController {
   constructor(private readonly appService: MortgageSummaryService) {}
 
   @Get()
-  getData() {
-    return this.appService.getData();
+  async getMortgageSummary( hashKey: string): Promise<MortgageResult> {
+    return this.appService.getMortgageSummary( hashKey );
   }
 }

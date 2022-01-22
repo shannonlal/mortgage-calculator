@@ -13,9 +13,13 @@ describe('MortgageSummaryService', () => {
     service = app.get<MortgageSummaryService>(MortgageSummaryService);
   });
 
-  describe('getData', () => {
-    it('should return "Welcome to mortgage-summary-api!"', () => {
-      expect(service.getData()).toEqual({ message: 'Welcome to mortgage-summary-api!' });
+  describe('getMortgageSummary', () => {
+    it('should return default mortgage summary', async () => {
+
+      const rst = await service.getMortgageSummary('123112312');
+      expect( rst ).toBeDefined();
+
+      expect( rst.id ).toBe('');
     });
   });
 });

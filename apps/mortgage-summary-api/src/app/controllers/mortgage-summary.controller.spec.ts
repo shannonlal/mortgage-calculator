@@ -14,9 +14,13 @@ describe('MortgageSummaryController', () => {
   });
 
   describe('getData', () => {
-    it('should return "Welcome to mortgage-summary-api!"', () => {
+    it('should return "Welcome to mortgage-summary-api!"', async () => {
       const appController = app.get<MortgageSummaryController>(MortgageSummaryController);
-      expect(appController.getData()).toEqual({ message: 'Welcome to mortgage-summary-api!' });
+
+      const rst = await appController.getMortgageSummary('12asdffsdasdf');
+
+      expect( rst).toBeDefined();
+      expect( rst.id).toBe('');
     });
   });
 });

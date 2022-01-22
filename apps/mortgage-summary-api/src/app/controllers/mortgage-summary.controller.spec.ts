@@ -1,21 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { AppController } from './app.controller';
-import { AppService } from '../services/app.service';
+import { MortgageSummaryController } from './mortgage-summary.controller';
+import { MortgageSummaryService } from '../services/mortgage-summary.service';
 
-describe('AppController', () => {
+describe('MortgageSummaryController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      controllers: [MortgageSummaryController],
+      providers: [MortgageSummaryService],
     }).compile();
   });
 
   describe('getData', () => {
     it('should return "Welcome to mortgage-summary-api!"', () => {
-      const appController = app.get<AppController>(AppController);
+      const appController = app.get<MortgageSummaryController>(MortgageSummaryController);
       expect(appController.getData()).toEqual({ message: 'Welcome to mortgage-summary-api!' });
     });
   });

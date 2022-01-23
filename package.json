@@ -18,7 +18,7 @@
     "docker:build:calculator-api": "docker build -f apps/calculator-api/Dockerfile -t shannonlal/calculator-api:\"$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')\" .",
     "docker:push:calculator-api": "docker push shannonlal/calculator-api:\"$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')\"",
     "docker:build:mortgage-calculator-api": "docker build -f apps/mortgage-calculation-api/Dockerfile -t shannonlal/mortgage-calculation-api:\"$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')\" .",
-    "docker:push:mortgage-calculator-api": "docker push shannonlal/mortgage-calculation-api:\"$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')\""  
+    "docker:push:mortgage-calculator-api": "docker push shannonlal/mortgage-calculation-api:\"$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')\""
   },
   "private": true,
   "dependencies": {
@@ -34,20 +34,20 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/graphql": "9.1.2",
     "@nestjs/platform-express": "^8.0.0",
-    "@nrwl/angular": "13.3.6",
+    "@nrwl/angular": "13.4.1",
     "@reduxjs/toolkit": "^1.7.1",
     "apollo-server": "3.6.1",
     "apollo-server-express": "3.6.1",
     "axios": "^0.24.0",
     "core-js": "^3.20.1",
-    "graphql": "15.7.2",
+    "graphql": "15.8.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "5.3.0",
     "reflect-metadata": "^0.1.13",
-    "regenerator-runtime": "0.13.7",
-    "rxjs": "~7.4.0",
+    "regenerator-runtime": "0.13.8",
+    "rxjs": "~7.5.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },

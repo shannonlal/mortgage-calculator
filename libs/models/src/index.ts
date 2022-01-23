@@ -6,3 +6,4 @@ export * from './lib/payment-frequency';
 export * from './lib/mortgage-details';
 export * from './lib/health-status';
 export * from './lib/mortgage-result';
+export * from './lib/mortgage-request';

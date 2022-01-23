@@ -8,6 +8,6 @@ describe('MortgageRequest', () => {
       createDate : new Date()
     };
     expect(mortgageRequest).toBeDefined();
-    expect(mortgageRequest.clientName).toBe('J. Smith');
+    expect(mortgageRequest.clientName).toBe('Bob Name');
   });
 });

@@ -1,9 +1,12 @@
 import { MortgageResult } from '@mortgage-calculator/models';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class MortgageSummaryService {
+  private readonly logger = new Logger(MortgageSummaryService.name);
   async getMortgageSummary( hashKey: string ): Promise<MortgageResult> {
+
+    this.logger.log(`Getting the Mortgage Summary ${hashKey}`);
 
     const mortgageSummary: MortgageResult = {
       id: '',

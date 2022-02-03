@@ -1,25 +1,29 @@
 import { MortgageResult } from '@mortgage-calculator/models';
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Logger } from '@nestjs/common';
 import { MortgageSummaryDto } from '../dto/mortgage-summary.dto';
+import { MortgageSummary } from '../schemas/mortgage-summary.schema';
 
 import { MortgageSummaryService } from '../services/mortgage-summary.service';
 
 @Controller('mortgage-summary')
 export class MortgageSummaryController {
+  private readonly logger = new Logger(MortgageSummaryController.name);
   constructor(private readonly appService: MortgageSummaryService) {}
 
   @Get(':id')
   async getMortgageSummary( @Param('id') hashKey:string): Promise<MortgageResult> {
+    this.logger.log(`Getting Mortgage Summary Id ${hashKey}`);
     return this.appService.getMortgageSummary( hashKey );
   }
 
   @Post()
-  async createMortgageSummary( @Body() dto:MortgageSummaryDto): Promise<MortgageResult> {
-    return this.appService.getMortgageSummary( undefined );
+  async createMortgageSummary( @Body() dto:MortgageSummaryDto): Promise<MortgageSummary> {
+    return this.appService.createMortgageSummary( dto );
   }
 
   @Delete(':id')
   async deleteMortgageSummary( @Param('id') hashKey:string): Promise<MortgageResult> {
+    this.logger.log(`Delete Mortgage Summary Id ${hashKey}`);
     return this.appService.getMortgageSummary( undefined );
   }
 }

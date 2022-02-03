@@ -12,7 +12,7 @@ export class MortgageSummary {
     monthlyPayment: number;
 
     @Prop({ required: true })    
-    creationDate: string;
+    creationDate: Date;
 
     @Prop({ required: true })
     mortgageAmountPerMonth: number;

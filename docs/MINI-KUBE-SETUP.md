@@ -17,6 +17,10 @@ minikube start
 minikube dashboard
 ```
 
+```
+minikube dashboard --url
+```
+
 # Minikube Deployment
 
 ## Setup Environment (ConfigMap) 

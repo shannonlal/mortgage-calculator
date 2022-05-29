@@ -47,3 +47,8 @@ kubectl apply -f services/api-service.yaml  --namespace="mortgage-dev"
 ```
 kubectl apply -f services/mortgage-service.yaml  --namespace="mortgage-dev"
 ```
+
+## Deploy the Ingress Controller
+```
+kubectl apply -f ingress/ingress.yaml  --namespace="mortgage-dev"
+```

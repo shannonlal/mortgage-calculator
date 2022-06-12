@@ -11,7 +11,7 @@ export class MortgageAboutResolver {
     constructor(private readonly mortgageAboutService: MortgageAboutService) {}
 
     @Query(returns => MortgageAboutResult )
-    async calculateMortgage(): Promise<MortgageAboutResult> {
+    async getMortgageVersion(): Promise<MortgageAboutResult> {
         try{
             this.logger.log(`Get About Mortgage `);
             const aboutMortgage: MortgageAboutDto = await this.mortgageAboutService.getVersion();

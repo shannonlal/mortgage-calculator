@@ -38,8 +38,9 @@
     "@nestjs/platform-express": "^8.2.5",
     "@nrwl/angular": "13.7.3",
     "@reduxjs/toolkit": "^1.7.1",
-    "apollo-server": "3.6.1",
-    "apollo-server-express": "3.6.1",
+
+    "apollo-server": "3.6.2",
+    "apollo-server-express": "3.6.2",
     "axios": "^0.24.0",
     "core-js": "^3.20.3",
     "graphql": "15.8.0",

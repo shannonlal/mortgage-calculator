@@ -5,9 +5,8 @@ metadata:
 spec:
   selector:
     app: mortgage-app
-  type: LoadBalancer 
+  type: NodePort 
   ports:
     - protocol: TCP
-      port: 3334
+      port: 80
       targetPort: 3334
-      nodePort: 31001

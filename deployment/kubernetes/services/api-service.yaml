@@ -5,9 +5,8 @@ metadata:
 spec:
   selector:
     app: calculator-api
-  type: LoadBalancer 
+  type: NodePort 
   ports:
     - protocol: TCP
-      port: 3333
+      port: 80
       targetPort: 3333
-      nodePort: 31000

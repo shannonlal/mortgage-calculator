@@ -44,6 +44,12 @@ NOTE Space before period
 docker-compose up
 ```
 
+## Connect to docker compose
+
+In the repo under the docs directory is a Postman file for getting postman collection.
+There are two Mortgage Details files that can be used for connecting to the two different services
+
+
 ## Troubleshooting
 If you get an issue where there might be a service running on a particular port.  You can run the following command to get a list of all the services running on a given port
 

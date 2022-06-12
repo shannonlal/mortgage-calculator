@@ -37,7 +37,7 @@
     "@nestjs/mongoose": "^9.0.2",
     "@nestjs/platform-express": "^8.2.5",
     "@nrwl/angular": "13.7.3",
-    "@reduxjs/toolkit": "^1.7.1",
+    "@reduxjs/toolkit": "^1.7.2",
     "apollo-server": "3.6.2",
     "apollo-server-express": "3.6.2",
     "axios": "^0.25.0",

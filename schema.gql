@@ -14,9 +14,15 @@ type CalculationResult {
   totalAmountInPeriod: Float!
 }
 
+"""about mortgage"""
+type MortgageAboutResult {
+  version: String!
+}
+
 type Query {
   calculateMortgage(inputData: MortgageDetailsInput!): CalculationResult!
   getDefaultCalculation(mortgageAmount: Float!): CalculationResult!
+  getMortgageVersion: MortgageAboutResult!
 }
 
 input MortgageDetailsInput {

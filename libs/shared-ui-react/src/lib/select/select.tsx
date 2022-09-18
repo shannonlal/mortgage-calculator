@@ -13,7 +13,6 @@ interface CalculatorSelectProps<T extends Selectable> {
     optionsList: T[];
 };
 
-
 /**
  * The following will build a selection list that accepts a selectable list and will display it
  * @param props: CalculatorSelectProps

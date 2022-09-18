@@ -40,13 +40,13 @@ jobs:
         path: .eslintcache
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('.eslintcache') }}
     - if: ${{ steps.cache-eslint.outputs.cache-hit == 'true' }}
-        name: ESlint cache was found
-        continue-on-error: true
-        run: echo "ESLINT Cache was found"
+      name: ESlint cache was found
+      continue-on-error: true
+      run: echo "ESLINT Cache was found"
     - if: ${{ steps.cache-eslint.outputs.cache-hit != 'true' }}
-        name: ESLint cache was NOT found
-        continue-on-error: true
-        run: echo "ESLINT Cache was NOT found"  
+      name: ESLint cache was NOT found
+      continue-on-error: true
+      run: echo "ESLINT Cache was NOT found"  
     - run: npm run lint:all
     - run: npm run test:all
     - run: codecov

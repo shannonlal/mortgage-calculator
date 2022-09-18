@@ -30,6 +30,23 @@ jobs:
     - run: npm run postinstall
     - run: npm install -g nx
     - run: npm install codecov -g
+    - name: Cache ESLint Result
+      id: cache-eslint
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-eslint
+      with:
+        # npm cache file is stored on .eslintcache
+        path: .eslintcache
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('.eslintcache') }}
+    - if: ${{ steps.cache-eslint.outputs.cache-hit == 'true' }}
+        name: ESlint cache was found
+        continue-on-error: true
+        run: echo "ESLINT Cache was found"
+    - if: ${{ steps.cache-eslint.outputs.cache-hit != 'true' }}
+        name: ESLint cache was NOT found
+        continue-on-error: true
+        run: echo "ESLINT Cache was NOT found"  
     - run: npm run lint:all
     - run: npm run test:all
     - run: codecov

@@ -36,7 +36,7 @@
     "@nestjs/graphql": "9.1.2",
     "@nestjs/mongoose": "^9.0.2",
     "@nestjs/platform-express": "^8.2.5",
-    "@nrwl/angular": "13.7.3",
+    "@nrwl/angular": "16.0.0",
     "@reduxjs/toolkit": "^1.7.2",
     "apollo-server": "3.6.2",
     "apollo-server-express": "3.6.2",
